@@ -3411,14 +3411,7 @@
   \pagenumbering{Alph}%
   \sysu@pdfbookmark{-1}{\sysu@title}%
   \sysu@titlepage
-  \ifsysu@include@spine@true
-    \sysu@spine
-  \fi
-%  \ifsysu@degree@graduate
-%    \cleardoublepage
-%    \sysu@titlepage@en
-%  \fi
-  \cleardoublepage
+  \clearpage
 }
 %    \end{macrocode}
 % \end{macro}
@@ -3426,31 +3419,13 @@
 % \begin{macro}{\sysu@titlepage}
 % 中文封面（题名页）
 %
-% 研究生的中文封面分“学术型”和“专业型”两种 layout，但是“工程硕士”跟“学术型” 的
-% layout 一样，所以按照 \cs{sysu@discipline}（工程领域）是否为空来区分“工程硕士”。
 %    \begin{macrocode}
 \newcommand\sysu@titlepage{%
   \sysusetup{language = chinese}%
   \ifsysu@degree@graduate
-    \ifsysu@degree@type@academic
-      \sysu@titlepage@graduate@academic
-    \else
-      \ifx\sysu@discipline\@empty
-        \sysu@titlepage@graduate@professional
-      \else
-        \sysu@titlepage@graduate@academic
-      \fi
-    \fi
+    \sysu@titlepage@graduate@academic
   \else
-    \ifsysu@degree@bachelor
-      \sysu@titlepage@bachelor
-    \else
-      \ifsysu@degree@postdoc
-        \sysu@cover@postdoc
-        \cleardoublepage
-        \sysu@titlepage@postdoc
-      \fi
-    \fi
+    \sysu@titlepage@bachelor
   \fi
   \sysu@reset@main@language
 }
@@ -3465,8 +3440,8 @@
 %    \begin{macrocode}
 \newcommand\sysu@titlepage@graduate@academic{%
   \newgeometry{
-    top     = 2cm,
-    bottom  = 6cm,
+    top     = 3cm,
+    bottom  = 3.5cm,
     hmargin = 3.5cm,
   }%
   \thispagestyle{empty}%
@@ -3478,46 +3453,47 @@
     \vskip 0.85cm%
     {\sysu@titlepage@title}%
     \vfill
-    \parbox[t][7.25cm][t]{\textwidth}{\centering\sysu@titlepage@info}\par
-    \vspace{3cm}
-    \parbox[t][1.03cm][t]{\textwidth}{\centering\sysu@titlepage@date}\par
-    \vskip 1.5cm%
+    \parbox[t][8.25cm][t]{\textwidth}{\centering\sysu@titlepage@info}\par
+    \parbox[t][1cm][b]{\textwidth}{\centering\sysu@titlepage@date}\par
+    \vskip 1cm%
     \parbox[t][2cm][t]{\textwidth}{%
       \hskip -0.69cm%
       \sysu@titlepage@secret
     }\par
   \endgroup
+  \thispagestyle{empty}
   \clearpage
   \restoregeometry
 }
 %    \end{macrocode}
 %
-% 专业型学位论文中文封面
+% 专业型学位论文中文封面(和学术型一样)
 %    \begin{macrocode}
 \newcommand\sysu@titlepage@graduate@professional{%
-  \newgeometry{
-    top     = 2cm,
-    bottom  = 6cm,
-    hmargin = 3.5cm,
-  }%
-  \thispagestyle{empty}%
-  \null\vskip 0.45cm%
-  \begingroup
-    \centering
-    \parbox[t][1.52cm][t]{\textwidth}{%
-      \hskip -0.69cm%
-      \sysu@titlepage@secret
-    }\par
-    \vskip 1.5cm%
-    {\sffamily\yihao[1.575]\sysu@title\par}%
-    \vskip 0.9cm%
-    \sysu@titlepage@degree
-    \vfill
-    \parbox[t][5.28cm][t]{\textwidth}{\centering\sysu@titlepage@info}\par
-    \parbox[t][1.25cm][t]{\textwidth}{\centering\sysu@titlepage@date}\par
-  \endgroup
-  \clearpage
-  \restoregeometry
+    \sysu@titlepage@graduate@academic
+%   \newgeometry{
+%     top     = 2cm,
+%     bottom  = 6cm,
+%     hmargin = 3.5cm,
+%   }%
+%   \thispagestyle{empty}%
+%   \null\vskip 0.45cm%
+%   \begingroup
+%     \centering
+%     \parbox[t][1.52cm][t]{\textwidth}{%
+%       \hskip -0.69cm%
+%       \sysu@titlepage@secret
+%     }\par
+%     \vskip 1.5cm%
+%     {\sffamily\yihao[1.575]\sysu@title\par}%
+%     \vskip 0.9cm%
+%     \sysu@titlepage@degree
+%     \vfill
+%     \parbox[t][5.28cm][t]{\textwidth}{\centering\sysu@titlepage@info}\par
+%     \parbox[t][1.25cm][t]{\textwidth}{\centering\sysu@titlepage@date}\par
+%   \endgroup
+%   \clearpage
+%   \restoregeometry
 }
 %    \end{macrocode}
 %
