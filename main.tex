@@ -2,12 +2,9 @@
 % !TeX program = xelatex
 % !TeX spellcheck = en_US
 
-\documentclass[degree=master]{sysuthesis}
+\documentclass[degree=doctor]{sysuthesis}
   % 学位 degree:
-  %   doctor | master | bachelor | postdoc
-  % 学位类型 degree-type:
-  %   academic（默认）| professional
-
+  %   doctor | master
 
 % 论文基本配置，加载宏包等全局配置
 \input{sysusetup}
@@ -18,19 +15,7 @@
 % 封面
 \maketitle
 
-% % 学位论文指导小组、公开评阅人和答辩委员会名单
-% \input{data/committee}
-
 % 声明
-
-% 生成的声明页是否要插入页眉和页脚（默认 empty）
-% 仅在需要进行电子签名时，才需要打开这一选项
-% 插入的扫描声明页总是会生成页眉（研究生）和页脚，不受这一选项影响
-% \statement[page-style=plain]
-% 将签字扫描后的声明文件 scan-statement.pdf 替换原始页面
-% \statement[file=scan-statement.pdf]
-
-
 % % 声明页
 \statementpage
 
@@ -41,7 +26,7 @@
 \tableofcontents
 
 % 插图和附表清单
-\listoffiguresandtables  % 插图和附表清单
+% \listoffiguresandtables  % 插图和附表清单
 % \listoffigures           % 插图清单
 % \listoftables            % 附表清单
 
@@ -67,8 +52,6 @@
 % 附录
 \appendix
 \input{data/appendix}
-% \input{data/appendix-survey}       % 本科生：外文资料的调研阅读报告
-% \input{data/appendix-translation}  % 本科生：外文资料的书面翻译
 
 % 致谢
 \input{data/acknowledgements}
