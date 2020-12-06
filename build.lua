@@ -8,7 +8,7 @@ checksuppfiles = {"*.tex"}
 demofiles = {"latexmkrc", "Makefile"}
 docfiles = {
   "CHANGELOG.md",
-  "thusetup.tex",
+  "sysusetup.tex",
   "data", "ref",
 }
 installfiles = {"*.cls", "*.bst", "*.bbx", "*.cbx", "tsinghua-name-bachelor.pdf"}

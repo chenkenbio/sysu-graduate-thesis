@@ -148,7 +148,7 @@
 - 增加 `l3build` 测试。
 
 ### Changed
-- 重新设计 `\thusetup` 的接口。
+- 重新设计 `\sysusetup` 的接口。
 - 指导教师的姓名和职称用英文逗号分开（#424）。
 - 重新设计封面（题名页）。
 - `\makecover` 拆分为 `\maketitle`、`\copyrightpage`。
@@ -260,7 +260,7 @@
 
 ## [v5.1.0] - 2015-12-27
 ### Changed
-- `\thusetup`: 通过 `\thusetup` 统一设置封面信息。
+- `\sysusetup`: 通过 `\sysusetup` 统一设置封面信息。
 - `\thu@first@titlepage`: 利用 `CJKfilltwosides` 优化封面排版。
 - `\thu@first@titlepage`: 修改联合指导教师显示问题。
 
