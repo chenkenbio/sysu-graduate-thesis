@@ -3969,22 +3969,19 @@
 %    \end{macrocode}
 % \end{environment}
 %
-% \subsubsection{授权说明}
+% \subsubsection{声明页}
 % \begin{macro}{\statementpage}
-% 授权说明
+% 
 %    \begin{macrocode}
-\newcommand\statementpage[1][]{%
+\newcommand\statementpage{%
   \cleardoublepage
   \thispagestyle{empty}%
   \sysu@pdfbookmark{0}{声明}%
   \sysu@phantomsection
-%\kvsetkeys{sysu@copyright}{#1}%
   \sysu@copyright@page@graduate
-
 }
 %    \end{macrocode}
 %
-% 支持扫描文件替换。
 %    \begin{macrocode}
 \newcommand{\sysu@authorization@frontdate}{%
   日\ifsysu@degree@bachelor\hspace{1em}\else\hspace{2em}\fi 期：}
