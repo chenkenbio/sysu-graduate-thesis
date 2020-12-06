@@ -2850,7 +2850,7 @@
 %  \newcommand{\sysu@abstract@name@en}{ABSTRACT}
 %\else
   \newcommand{\sysu@abstract@name}{摘\quad 要}
-  \newcommand{\sysu@abstract@name@en}{Abstract}
+  \newcommand{\sysu@abstract@name@en}{ABSTRACT}
 %\fi
 %    \end{macrocode}
 %
@@ -2860,7 +2860,7 @@
   chapter = {
     nameformat   = {},
     numberformat = {},
-    titleformat  = {},
+    titleformat  = \xiaoer\heiti,
     aftername    = \quad,
     fixskip      = true,
     afterindent  = true,
@@ -2868,10 +2868,12 @@
     lotskip      = 0pt,
   },
   section = {
+    titleformat  = \sanhao\songti,
     aftername    = \quad,
     afterindent  = true,
   },
   subsection = {
+    titleformat  = \sihao\songti,
     aftername    = \quad,
     afterindent  = true,
   },
@@ -3471,17 +3473,19 @@
   \null\vskip 0.2cm%
   \begingroup
     \centering
+%   中山大学[硕士/博士]学位论文
+    \sysu@thesis@type
+    \vskip 0.85cm%
+    {\sysu@titlepage@title}%
+    \vfill
+    \parbox[t][7.25cm][t]{\textwidth}{\centering\sysu@titlepage@info}\par
+    \vspace{3cm}
+    \parbox[t][1.03cm][t]{\textwidth}{\centering\sysu@titlepage@date}\par
+    \vskip 1.5cm%
     \parbox[t][2cm][t]{\textwidth}{%
       \hskip -0.69cm%
       \sysu@titlepage@secret
     }\par
-    \vskip 1.5cm%
-    {\sysu@titlepage@title}%
-%     \vskip 0.85cm%
-%     \sysu@titlepage@degree
-    \vfill
-    \parbox[t][7.25cm][t]{\textwidth}{\centering\sysu@titlepage@info}\par
-    \parbox[t][1.03cm][t]{\textwidth}{\centering\sysu@titlepage@date}\par
   \endgroup
   \clearpage
   \restoregeometry
@@ -3543,31 +3547,22 @@
   \begingroup
     \def\CJKglue{\hskip 1bp}%
     \CJKfamily+{}\xiaoer
-    (申请中山大学\sysu@degree@name\ifsysu@degree@type@professional 专业\fi 学位论文)\par
+    中山大学\sysu@degree@name\ifsysu@degree@type@professional 专业\fi 学位论文\par
   \endgroup
+}
+\newcommand\sysu@thesis@type{
+    \begingroup
+        \def\CJKglue{\hskip 1bp}%
+        \CJKfamily+{}\xiaoer
+        中山大学\sysu@degree@name 学位论文\par
+    \endgroup
 }
 %    \end{macrocode}
 %
 % 作者及导师信息部分使用三号仿宋字
 %    \begin{macrocode}
 \newcommand\sysu@titlepage@info{%
-  \ifsysu@degree@doctor
-    \ifsysu@degree@type@academic
-      \sysu@titlepage@info@doctor@academic
-    \else
-      \sysu@titlepage@info@doctor@professional
-    \fi
-  \else
-    \ifsysu@degree@type@academic
-      \sysu@titlepage@info@master@academic
-    \else
-      \ifx\sysu@discipline\@empty
-        \sysu@titlepage@info@master@other
-      \else
-        \sysu@titlepage@info@master@engineer
-      \fi
-    \fi
-  \fi
+  \sysu@titlepage@info@graduate@academic
 }
 %    \end{macrocode}
 %
@@ -3586,54 +3581,64 @@
     #4%
   \end{tabular}%
 }
-\newcommand\sysu@titlepage@info@doctor@academic{%
-  \sysu@titlepage@info@tabular{2.8cm}{2.8cm}{0.82cm}{%
+\newcommand\sysu@titlepage@info@graduate@academic{%
+  \sysu@titlepage@info@tabular{2.8cm}{3.8cm}{0.82cm}{%
     \sysu@info@item{培养单位}{}{\sysu@department}%
-    \sysu@info@item{学科}{}{\sysu@discipline}%
-    \sysu@info@item{研究生}{\sysu@name@title}{\sysu@author}%
-    \sysu@info@item{指导教师}{\sysu@name@title}{\sysu@supervisor}%
-    \sysu@info@item{副指导教师}{\sysu@name@title}{\sysu@associate@supervisor}%
-    \sysu@info@item{联合导师}{\sysu@name@title}{\sysu@joint@supervisor}%
+    \sysu@info@item{专业名称}{}{\sysu@discipline}%
+    \sysu@info@item{申请人姓名}{\sysu@name@title}{\sysu@author}%
+    \sysu@info@item{导师姓名}{\sysu@name@title}{\sysu@supervisor}%
+    \sysu@info@item{答辩委员会成员}
   }\par
 }
-\newcommand\sysu@titlepage@info@doctor@professional{%
-  \sysu@titlepage@info@tabular{3.03cm}{5em}{1.52cm}{%
-    \sysu@info@item{培养单位}{}{\sysu@department}%
-    \sysu@info@item{申请人}{\sysu@name@title}{\sysu@author}%
-    \sysu@info@item{指导教师}{\sysu@name@title}{\sysu@supervisor}%
-    \sysu@info@item{副指导教师}{\sysu@name@title}{\sysu@associate@supervisor}%
-    \sysu@info@item{联合导师}{\sysu@name@title}{\sysu@joint@supervisor}%
-  }\par
-}
-\newcommand\sysu@titlepage@info@master@academic{%
-  \sysu@titlepage@info@tabular{3.59cm}{5.5em}{0.82cm}{%
-    \sysu@info@item{培养单位}{}{\sysu@department}%
-    \sysu@info@item{学科}{}{\sysu@discipline}%
-    \sysu@info@item{研究生}{\sysu@name@title}{\sysu@author}%
-    \sysu@info@item{指导教师}{\sysu@name@title}{\sysu@supervisor}%
-    \sysu@info@item{副指导教师}{\sysu@name@title}{\sysu@associate@supervisor}%
-    \sysu@info@item{联合指导教师}{\sysu@name@title}{\sysu@joint@supervisor}%
-  }\par
-}
-\newcommand\sysu@titlepage@info@master@engineer{%
-  \sysu@titlepage@info@tabular{2.8cm}{2.8cm}{1.34cm}{%
-    \sysu@info@item{培养单位}{}{\sysu@department}%
-    \sysu@info@item{工程领域}{}{\sysu@discipline}%
-    \sysu@info@item{申请人}{\sysu@name@title}{\sysu@author}%
-    \sysu@info@item{指导教师}{\sysu@name@title}{\sysu@supervisor}%
-    \sysu@info@item{副指导教师}{\sysu@name@title}{\sysu@associate@supervisor}%
-    \sysu@info@item{联合指导教师}{\sysu@name@title}{\sysu@joint@supervisor}%
-  }\par
-}
-\newcommand\sysu@titlepage@info@master@other{%
-  \sysu@titlepage@info@tabular{3.28cm}{5em}{1.52cm}{%
-    \sysu@info@item{培养单位}{}{\sysu@department}%
-    \sysu@info@item{申请人}{\sysu@name@title}{\sysu@author}%
-    \sysu@info@item{指导教师}{\sysu@name@title}{\sysu@supervisor}%
-    \sysu@info@item{副指导教师}{\sysu@name@title}{\sysu@associate@supervisor}%
-    \sysu@info@item{联合指导教师}{\sysu@name@title}{\sysu@joint@supervisor}%
-  }\par
-}
+
+% \newcommand\sysu@titlepage@info@doctor@academic{%
+%   \sysu@titlepage@info@tabular{2.8cm}{2.8cm}{0.82cm}{%
+%     \sysu@info@item{培养单位}{}{\sysu@department}%
+%     \sysu@info@item{学科}{}{\sysu@discipline}%
+%     \sysu@info@item{研究生}{\sysu@name@title}{\sysu@author}%
+%     \sysu@info@item{指导教师}{\sysu@name@title}{\sysu@supervisor}%
+%     \sysu@info@item{副指导教师}{\sysu@name@title}{\sysu@associate@supervisor}%
+%     \sysu@info@item{联合导师}{\sysu@name@title}{\sysu@joint@supervisor}%
+%   }\par
+% }
+% \newcommand\sysu@titlepage@info@doctor@professional{%
+%   \sysu@titlepage@info@tabular{3.03cm}{5em}{1.52cm}{%
+%     \sysu@info@item{培养单位}{}{\sysu@department}%
+%     \sysu@info@item{申请人}{\sysu@name@title}{\sysu@author}%
+%     \sysu@info@item{指导教师}{\sysu@name@title}{\sysu@supervisor}%
+%     \sysu@info@item{副指导教师}{\sysu@name@title}{\sysu@associate@supervisor}%
+%     \sysu@info@item{联合导师}{\sysu@name@title}{\sysu@joint@supervisor}%
+%   }\par
+% }
+% \newcommand\sysu@titlepage@info@master@academic{%
+%   \sysu@titlepage@info@tabular{3.59cm}{5.5em}{0.82cm}{%
+%     \sysu@info@item{培养单位}{}{\sysu@department}%
+%     \sysu@info@item{学科}{}{\sysu@discipline}%
+%     \sysu@info@item{研究生}{\sysu@name@title}{\sysu@author}%
+%     \sysu@info@item{指导教师}{\sysu@name@title}{\sysu@supervisor}%
+%     \sysu@info@item{副指导教师}{\sysu@name@title}{\sysu@associate@supervisor}%
+%     \sysu@info@item{联合指导教师}{\sysu@name@title}{\sysu@joint@supervisor}%
+%   }\par
+% }
+% \newcommand\sysu@titlepage@info@master@engineer{%
+%   \sysu@titlepage@info@tabular{2.8cm}{2.8cm}{1.34cm}{%
+%     \sysu@info@item{培养单位}{}{\sysu@department}%
+%     \sysu@info@item{工程领域}{}{\sysu@discipline}%
+%     \sysu@info@item{申请人}{\sysu@name@title}{\sysu@author}%
+%     \sysu@info@item{指导教师}{\sysu@name@title}{\sysu@supervisor}%
+%     \sysu@info@item{副指导教师}{\sysu@name@title}{\sysu@associate@supervisor}%
+%     \sysu@info@item{联合指导教师}{\sysu@name@title}{\sysu@joint@supervisor}%
+%   }\par
+% }
+% \newcommand\sysu@titlepage@info@master@other{%
+%   \sysu@titlepage@info@tabular{3.28cm}{5em}{1.52cm}{%
+%     \sysu@info@item{培养单位}{}{\sysu@department}%
+%     \sysu@info@item{申请人}{\sysu@name@title}{\sysu@author}%
+%     \sysu@info@item{指导教师}{\sysu@name@title}{\sysu@supervisor}%
+%     \sysu@info@item{副指导教师}{\sysu@name@title}{\sysu@associate@supervisor}%
+%     \sysu@info@item{联合指导教师}{\sysu@name@title}{\sysu@joint@supervisor}%
+%   }\par
+% }
 %    \end{macrocode}
 %
 % 论文成文打印的日期，用三号宋体汉字，字距延伸 0.5bp，
@@ -3650,75 +3655,75 @@
 % \myentry{研究生英文封面}
 % \begin{macro}{\sysu@titlepage@en}
 %    \begin{macrocode}
-\newcommand{\sysu@titlepage@en}{%
-  \newgeometry{
-    top     = 5.5cm,
-    bottom  = 5cm,
-    hmargin = 3.6cm,
-  }%
-  \thispagestyle{empty}%
-  \sysusetup{language = english}%
-  \ifsysu@degree@type@academic
-    \sysu@titlepage@en@graduate@academic
-  \else
-    \sysu@titlepage@en@graduate@professional
-  \fi
-  \sysu@reset@main@language
-  \clearpage
-  \restoregeometry
-}
-\newcommand\sysu@titlepage@en@graduate@academic{%
-  \begingroup
-    \centering
-    \null\vskip -0.7cm%
-    \sysu@titlepage@en@title
-    \vfill
-    \sanhao[1.725]%
-    \sysu@titlepage@en@degree
-    \vskip 0.13cm%
-    in\par
-    \vskip 0.1cm%
-    {\bfseries\sffamily\sysu@discipline@en\par}
-    \vskip 0.7cm%
-    {\sffamily by\par}
-    \vskip 0.24cm%
-    {\sffamily\bfseries\sysu@author@en\par}%
-    \vskip 0.14cm%
-    \parbox[t][3.07cm][t]{\textwidth}{%
-      \centering\xiaosan[2.1]%
-      \sysu@titlepage@en@supervisor
-    }\par
-    \sysu@titlepage@en@date
-    \vskip 0.65cm%
-  \endgroup
-}
-\newcommand\sysu@titlepage@en@graduate@professional{%
-  \begingroup
-    \centering
-    \null\vskip -0.7cm%
-    \sysu@titlepage@en@title
-    \vfill
-    \sanhao[1.725]%
-    \sysu@titlepage@en@degree
-    \vskip 1.1cm%
-    {\sffamily by\par}
-    \vskip 0.24cm%
-    {\sffamily\bfseries\sysu@author@en\par}%
-    \ifx\sysu@discipline@en\empty
-      \vskip 1.95cm%
-    \else
-      \vskip -0.1cm%
-      {\sffamily\bfseries(\sysu@discipline@en)\par}%
-      \vskip 1.1cm%
-    \fi
-    \parbox[t][3.37cm][t]{\textwidth}{%
-      \centering\xiaosan[1.82]%
-      \sysu@titlepage@en@supervisor
-    }\par
-    \sysu@titlepage@en@date
-    \vskip 0.3cm%
-  \endgroup
-}
+% \newcommand{\sysu@titlepage@en}{%
+%   \newgeometry{
+%     top     = 5.5cm,
+%     bottom  = 5cm,
+%     hmargin = 3.6cm,
+%   }%
+%   \thispagestyle{empty}%
+%   \sysusetup{language = english}%
+%   \ifsysu@degree@type@academic
+%     \sysu@titlepage@en@graduate@academic
+%   \else
+%     \sysu@titlepage@en@graduate@professional
+%   \fi
+%   \sysu@reset@main@language
+%   \clearpage
+%   \restoregeometry
+% }
+% \newcommand\sysu@titlepage@en@graduate@academic{%
+%   \begingroup
+%     \centering
+%     \null\vskip -0.7cm%
+%     \sysu@titlepage@en@title
+%     \vfill
+%     \sanhao[1.725]%
+%     \sysu@titlepage@en@degree
+%     \vskip 0.13cm%
+%     in\par
+%     \vskip 0.1cm%
+%     {\bfseries\sffamily\sysu@discipline@en\par}
+%     \vskip 0.7cm%
+%     {\sffamily by\par}
+%     \vskip 0.24cm%
+%     {\sffamily\bfseries\sysu@author@en\par}%
+%     \vskip 0.14cm%
+%     \parbox[t][3.07cm][t]{\textwidth}{%
+%       \centering\xiaosan[2.1]%
+%       \sysu@titlepage@en@supervisor
+%     }\par
+%     \sysu@titlepage@en@date
+%     \vskip 0.65cm%
+%   \endgroup
+% }
+% \newcommand\sysu@titlepage@en@graduate@professional{%
+%   \begingroup
+%     \centering
+%     \null\vskip -0.7cm%
+%     \sysu@titlepage@en@title
+%     \vfill
+%     \sanhao[1.725]%
+%     \sysu@titlepage@en@degree
+%     \vskip 1.1cm%
+%     {\sffamily by\par}
+%     \vskip 0.24cm%
+%     {\sffamily\bfseries\sysu@author@en\par}%
+%     \ifx\sysu@discipline@en\empty
+%       \vskip 1.95cm%
+%     \else
+%       \vskip -0.1cm%
+%       {\sffamily\bfseries(\sysu@discipline@en)\par}%
+%       \vskip 1.1cm%
+%     \fi
+%     \parbox[t][3.37cm][t]{\textwidth}{%
+%       \centering\xiaosan[1.82]%
+%       \sysu@titlepage@en@supervisor
+%     }\par
+%     \sysu@titlepage@en@date
+%     \vskip 0.3cm%
+%   \endgroup
+% }
 % \newcommand\sysu@titlepage@en@title{%
 %   \begingroup
 %     \sffamily\bfseries\fontsize{20bp}{31bp}\selectfont
@@ -3763,138 +3768,48 @@
 %    \end{macrocode}
 % \end{macro}
 %
-% \myentry{本科生封面}
-% 本科生封面要求：
-% \begin{itemize}
-%   \item 题目：1 号黑体字，1.2 倍行距。
-%   \item 系别、专业、姓名及指导教师信息部分使用三号仿宋\_GB2312 字。
-%   \item 论文成文打印的日期用阿拉伯数字，采用小四号宋体。
-%   \item 涉密的论文在封面右上角处注明论文密级，采用小四号宋体。
-% \end{itemize}
-%
-% 外文系英语专业要求题目先写中文标题，再写英文标题，字号 26pt，32 磅行距。
-%    \begin{macrocode}
-\newcommand\sysu@titlepage@bachelor{%
-  \newgeometry{
-    vmargin = 2.54cm,
-    hmargin = 3.17cm,
-  }%
-  \thispagestyle{empty}%
-  \begingroup
-    \centering
-    \parbox[t][0cm][t]{\textwidth}{%
-      \hfill
-      \xiaosi
-      \ifx\sysu@secret@level\@empty\else
-        \sysu@secret@level\space\sysu@secret@year 年\par
-      \fi
-    }%
-  \endgroup
-  \vfill
-  \begingroup
-    \centering
-    \includegraphics{tsinghua-name-bachelor.pdf}%
-    \vskip 0.94cm%
-    {\sffamily\bfseries\xiaochu\ziju{0.5}综合论文训练\par}%
-  \endgroup
-  \vskip 1.8cm%
-  \begingroup
-    \heiti
-    \ifsysu@main@language@chinese
-      \yihao[1.56]%
-    \else
-      \fontsize{26bp}{32bp}\selectfont
-    \fi
-    \parindent=18bp%
-    \hangindent=72bp%
-    \makebox[54bp]{\xiaoer[1.2]题目：}%
-    \CJKunderline*[skip=false, thickness=0.05em, depth=0.12em]{\sysu@title}%
-    \ifsysu@main@language@english
-      \\
-      \sysusetup{language=english}%
-      \ul\sysu@title@en
-      \sysusetup{language=chinese}%
-    \fi
-    \par
-  \endgroup
-  \vskip 1.9cm%
-  \begingroup
-    \fangsong\sanhao[2.32]%
-    \leftskip=2.5cm%
-    \parindent=\z@
-    \def\sysu@info@item##1##2##3{%
-      \ifx##3\@empty\else
-        \sysu@fixed@box{%
-          \ifx\sysu@joint@supervisor\@empty
-            4em%
-          \else
-            5.5em%
-          \fi
-        }{##1}：##2{##3}\par
-      \fi
-    }%
-    \def\sysu@name@title@format##1##2{%
-      \sysu@stretch{3em}{##1}\quad ##2%
-    }%
-    \sysu@info@item{系别}{}{\sysu@department}%
-    \sysu@info@item{专业}{}{\sysu@discipline}%
-    \sysu@info@item{姓名}{\sysu@name@title}{\sysu@author}%
-    \sysu@info@item{指导教师}{\sysu@name@title}{\sysu@supervisor}%
-    \sysu@info@item{辅导教师}{\sysu@name@title}{\sysu@associate@supervisor}%
-    \sysu@info@item{联合指导教师}{\sysu@name@title}{\sysu@joint@supervisor}%
-  \endgroup
-  \vskip 1.4cm%
-  \begingroup
-    \centering
-    {\CJKfamily+{}\xiaosi\sysu@format@date{\sysu@date@zh@digit}{\sysu@date}\par}%
-  \endgroup
-  \vfill
-  \clearpage
-  \restoregeometry
-}
-%    \end{macrocode}
-%
+
 % \myentry{博士后封面}
 %    \begin{macrocode}
-\newcommand\sysu@cover@postdoc{%
-  \thispagestyle{empty}%
-  \begin{center}%
-    \renewcommand\ULthickness{0.7pt}%
-    \vspace*{0.35cm}%
-    {\sihao[2.6]%
-      \sysu@stretch{3.1em}{分类号}\sysu@underline[3.7cm]{\sysu@clc}\hfill
-      密级\sysu@underline[3.7cm]{\sysu@secret@level}\par
-      \sysu@stretch{3.1em}{U D C}\sysu@underline[3.7cm]{\sysu@udc}\hfill
-      编号\sysu@underline[3.7cm]{\sysu@id}\par
-    }%
-    \vskip 3.15cm%
-    {\sffamily\bfseries\xiaoer[2.6]%
-      {\ziju{1.5}清华大学\par}%
-      {\ziju{0.5}博士后研究工作报告\par}%
-    }%
-    \vskip 0.2cm%
-    \parbox[t][4.0cm][c]{\textwidth}{%
-      \centering\sihao[3.46]\CJKunderline*[depth=1em]{\sysu@title}\par
-    }\par
-    \vskip 0.4cm%
-    {\xiaosi\sysu@author\par}%
-    \vskip 1.4cm%
-    {\xiaosi[1.58]\xeCJKsetup{underline/depth=0.9em}%
-      工作完成日期\quad
-      \sysu@CJKunderline[5.9cm]{%
-        \sysu@format@date{\sysu@date@zh@digit@short}{\sysu@start@date}—%
-        \sysu@format@date{\sysu@date@zh@digit@short}{\sysu@end@date}
-      }\par
-      \vskip 0.55cm%
-      报告提交日期\quad
-      \sysu@CJKunderline[5.9cm]{\sysu@format@date{\sysu@date@zh@digit@short}{\sysu@date}}\par
-    }%
-    \vskip 0.45cm%
-    {\xiaosi[2]{\ziju{1}清华大学}\quad （北京）\par}%
-    \vskip 0.25cm%
-    {\xiaosi[2]\sysu@format@date{\sysu@date@zh@digit@short}{\sysu@date}\par}%
-  \end{center}%
-}
+% \newcommand\sysu@cover@postdoc{%
+%   \thispagestyle{empty}%
+%   \begin{center}%
+%     \renewcommand\ULthickness{0.7pt}%
+%     \vspace*{0.35cm}%
+%     {\sihao[2.6]%
+%       \sysu@stretch{3.1em}{分类号}\sysu@underline[3.7cm]{\sysu@clc}\hfill
+%       密级\sysu@underline[3.7cm]{\sysu@secret@level}\par
+%       \sysu@stretch{3.1em}{U D C}\sysu@underline[3.7cm]{\sysu@udc}\hfill
+%       编号\sysu@underline[3.7cm]{\sysu@id}\par
+%     }%
+%     \vskip 3.15cm%
+%     {\sffamily\bfseries\xiaoer[2.6]%
+%       {\ziju{1.5}清华大学\par}%
+%       {\ziju{0.5}博士后研究工作报告\par}%
+%     }%
+%     \vskip 0.2cm%
+%     \parbox[t][4.0cm][c]{\textwidth}{%
+%       \centering\sihao[3.46]\CJKunderline*[depth=1em]{\sysu@title}\par
+%     }\par
+%     \vskip 0.4cm%
+%     {\xiaosi\sysu@author\par}%
+%     \vskip 1.4cm%
+%     {\xiaosi[1.58]\xeCJKsetup{underline/depth=0.9em}%
+%       工作完成日期\quad
+%       \sysu@CJKunderline[5.9cm]{%
+%         \sysu@format@date{\sysu@date@zh@digit@short}{\sysu@start@date}—%
+%         \sysu@format@date{\sysu@date@zh@digit@short}{\sysu@end@date}
+%       }\par
+%       \vskip 0.55cm%
+%       报告提交日期\quad
+%       \sysu@CJKunderline[5.9cm]{\sysu@format@date{\sysu@date@zh@digit@short}{\sysu@date}}\par
+%     }%
+%     \vskip 0.45cm%
+%     {\xiaosi[2]{\ziju{1}清华大学}\quad （北京）\par}%
+%     \vskip 0.25cm%
+%     {\xiaosi[2]\sysu@format@date{\sysu@date@zh@digit@short}{\sysu@date}\par}%
+%   \end{center}%
+% }
 %    \end{macrocode}
 %
 % \myentry{博士后题名页}
@@ -3985,6 +3900,7 @@
 %    \begin{macrocode}
 \newcommand{\sysu@authorization@frontdate}{%
   日\ifsysu@degree@bachelor\hspace{1em}\else\hspace{2em}\fi 期：}
+
 \newcommand\sysu@copyright@page@graduate{%
   \cleardoublepage
   \newgeometry{
@@ -4903,135 +4819,7 @@
   }%
 }
 %    \end{macrocode}
-%
-% 本科生《写作指南》有独特的要求：附录 A 为外文资料的调研阅读报告或书面翻译，
-% 并且要分别附上独立的参考文献和外文资料的原文索引。
-% 所以这里定义 \env{survey} 和 \env{translation} 专门处理这两种情况，
-% 其中参考文献使用了 \pkg{bibunits} 宏包的功能。
-%
-% \begin{environment}{survey}
-% 外文资料的调研阅读报告。
-%    \begin{macrocode}
-\newenvironment{survey}{%
-  \chapter{外文资料的调研阅读报告}%
-  \sysusetup{language = english}%
-  \let\title\sysu@appendix@title
-  \let\maketitle\sysu@appendix@maketitle
-  \sysu@set@partial@toc@format
-  \renewcommand\tableofcontents{%
-    \section*{Contents}%
-    \sysu@pdfbookmark{1}{Contents}%
-    \printcontents[survey]{l}{1}[2]{}%
-    \vskip 20bp%
-  }%
-  \renewcommand\bibname{参考文献}%
-  \let\bibsection\sysu@appendix@bibsection
-  \renewcommand\@bibunitname{\jobname-survey}%
-  \let\bibliographystyle\defaultbibliographystyle
-  \let\bibliography\sysu@appendix@bibliography
-  \begin{bibunit}%
-  \startcontents[survey]%
-}{%
-  \stopcontents[survey]%
-  \end{bibunit}%
-  \sysu@reset@main@language % restore language
-}
-%    \end{macrocode}
-% \end{environment}
-%
-% \begin{environment}{translation}
-% 外文资料的书面翻译。
-%    \begin{macrocode}
-\newenvironment{translation}{%
-  \chapter{外文资料的书面翻译}%
-  \sysusetup{language = chinese}%
-  \let\title\sysu@appendix@title
-  \let\maketitle\sysu@appendix@maketitle
-  \sysu@set@partial@toc@format
-  \renewcommand\tableofcontents{%
-    \section*{目录}%
-    \sysu@pdfbookmark{1}{目录}%
-    \printcontents[translation]{l}{1}[2]{}%
-    \vskip 20bp%
-  }%
-  \def\bibsection{%
-    \begingroup
-      \ctexset{section/numbering=false}%
-      \section{\bibname}%
-    \endgroup
-  }%
-  \renewcommand\@bibunitname{\jobname-translation}%
-  \let\bibliographystyle\defaultbibliographystyle
-  \let\bibliography\sysu@appendix@bibliography
-  \begin{bibunit}%
-  \startcontents[translation]%
-}{%
-  \stopcontents[translation]%
-  \end{bibunit}%
-  \sysu@reset@main@language % restore language
-}
-%    \end{macrocode}
-% \end{environment}
-%
-% \begin{environment}{translation}
-% 书面翻译对应的原文索引，区别于译文的参考文献。
-%    \begin{macrocode}
-\newenvironment{translation-index}{%
-  \begin{bibunit}%
-    \renewcommand\@bibunitname{\jobname-index}%
-    \renewcommand\bibname{书面翻译对应的原文索引}%
-    \let\bibsection\sysu@appendix@bibsection
-}{%
-  \end{bibunit}%
-}
-%    \end{macrocode}
-% \end{environment}
-%
-% 调研阅读报告需要独立的标题，这里仿照了标准文档类的用法 \cs{title}, \cs{maketitle}。
-%    \begin{macrocode}
-\DeclareRobustCommand\sysu@appendix@title[1]{\gdef\sysu@appendix@@title{#1}}
-\newcommand\sysu@appendix@maketitle{%
-  \par
-  \begin{center}%
-    \xiaosi[1.667]\sysu@appendix@@title
-  \end{center}%
-  \par
-}
-%    \end{macrocode}
-%
-%    \begin{macrocode}
-\newcommand\sysu@set@partial@toc@format{%
-  \titlecontents{section}
-    [\z@]{}
-    {\contentspush{\thecontentslabel\quad}}{}
-    {\sysu@leaders\thecontentspage}%
-  \titlecontents{subsection}
-    [1em]{}
-    {\contentspush{\thecontentslabel\quad}}{}
-    {\sysu@leaders\thecontentspage}%
-  \titlecontents{subsubsection}
-    [2em]{}
-    {\contentspush{\thecontentslabel\quad}}{}
-    {\sysu@leaders\thecontentspage}%
-}
-%    \end{macrocode}
-%
-% 调研阅读报告的参考文献(或书面翻译对应的外文资料的原文索引)标题用宋体小四号字，段前 20pt，段后 6pt，行距 20pt。
-%    \begin{macrocode}
-\newcommand\sysu@appendix@bibsection{%
-  \par
-  \vskip 20bp%
-  \sysu@pdfbookmark{1}{\bibname}%
-  \begingroup
-    \centering
-    \xiaosi[1.667]\bibname\par
-  \endgroup
-  \vskip 6bp%
-}%
-\newcommand\sysu@appendix@bibliography[1]{\putbib[#1]}
-%    \end{macrocode}
-%
-%
+
 % \subsection{个人简历}
 %
 % \begin{environment}{resume}
