@@ -19,6 +19,9 @@
 %%    https://www.latex-project.org/lppl.txt
 %% and version 1.3c or later is part of all distributions of LaTeX
 %% version 2005/12/01 or later.
+%%
+%% 
+%%  
 %% -------------------------------------------------------------------
 INTEGERS {
   citation.et.al.min
@@ -63,7 +66,7 @@ FUNCTION {load.config}
   #1 'sentence.case.title :=
   #0 'link.title :=
   #1 'title.in.journal :=
-  #1 'show.mark :=
+  #0 'show.mark :=
   #1 'show.medium.type :=
   #1 'slash.for.extraction :=
   #0 'in.booktitle :=

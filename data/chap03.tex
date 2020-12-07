@@ -1,4 +1,4 @@
-% !TeX root = ../thuthesis-example.tex
+% !TeX root = ../main.tex
 
 \chapter{数学符号和公式}
 
@@ -16,13 +16,26 @@
   \item 数学常数和特殊函数要求用正体，应使用 \cs{symup} 命令，
     如 $\symup{\pi} = 3.14\dots$; $\symup{e} = 2.718\dots$，
   \item 微分号和积分号使用使用正体，比如 $\int f(x) \dif x$。
+  \item 公式中的括号应使用 \verb|\left(|$\cdot$\verb|\right)|的形式, 中括号, 大括号与尖括号同理.
+      注意比较两种方式的区别:
+      \begin{itemize}
+          \item 只用\verb|(| $\cdot$ \verb|)|, \verb|[| $\cdot$ \verb|]|, \verb|\{| $\cdot$ \verb|\}|, \verb|<| $\cdot$ \verb|>|: \\
+              $\displaystyle (\frac{a}{b + c})$, $\displaystyle [\frac{a}{b + c}]$, $\displaystyle \{\frac{a}{b + c}\}$, $\displaystyle <\frac{a}{b + c}>$
+          \item 用\verb|\left(| $\cdot$ \verb|\right)|, \verb|\left[| $\cdot$ \verb|\right]|, \verb|\left\{| $\cdot$ \verb|\right\}|, \verb|\left<| $\cdot$ \verb|\right>|: \\
+              $\displaystyle \left(\frac{a}{b + c}\right)$, $\displaystyle \left[\frac{a}{b + c}\right]$, $\displaystyle \left\{\frac{a}{b + c}\right\}$, $\displaystyle \left<\frac{a}{b + c}\right>$
+      \end{itemize}
 \end{enumerate}
+\vspace{0.2cm}
 
+\subsection{更多用法}
 关于数学符号更多的用法，参考
 \href{http://mirrors.ctan.org/macros/latex/contrib/unicode-math/unicode-math.pdf}{\pkg{unicode-math}}
+
+\subsubsection{宏包的使用说明}
 宏包的使用说明，
 全部数学符号命的令参考
 \href{http://mirrors.ctan.org/macros/latex/contrib/unicode-math/unimath-symbols.pdf}{\pkg{unimath-symbols}}。
+
 
 关于量和单位推荐使用
 \href{http://mirrors.ctan.org/macros/latex/contrib/siunitx/siunitx.pdf}{\pkg{siunitx}}
@@ -41,7 +54,7 @@
 数学公式可以使用 \env{equation} 和 \env{equation*} 环境。
 注意数学公式的引用应前后带括号，建议使用 \cs{eqref} 命令，比如式 \eqref{eq:example}。
 \begin{equation}
-  \frac{1}{2 \symup{\pi} \symup{i}} \int_\gamma f = \sum_{k=1}^m n(\gamma; a_k) \mathscr{R}(f; a_k)
+  \frac{1}{2 \symup{\pi} \symup{i}} \int_\gamma f = \sum_{k=1}^m n\left(\gamma; a_k\right) \mathscr{R}\left(f; a_k\right)
   \label{eq:example}
 \end{equation}
 注意公式编号的引用应含有圆括号，可以使用 \cs{eqref} 命令。

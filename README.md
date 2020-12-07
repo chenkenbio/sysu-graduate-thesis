@@ -14,7 +14,9 @@
     - ......  
 
 ### 撰写论文  
-- `sysusetup.tex`: 填写基本的论文标题
-- `data/char01.tex`: 
-- `sysusetup.tex`: 
-- `sysusetup.tex`: 
+- `sysusetup.tex`: 填写论文标题, 学位类别, 学院, 专业等基本信息; 加载宏包; 定义参考文献格式  
+- `data/abstract.tex`: 填写摘要  
+- `data/denotation.tex`: 缩略语和符号, 请**按照字母顺序(A-Z)罗列**  
+- `data/chap*.tex`: 章节内容, 如果需要增添需要在`sysusetup.tex`里修改相关记录  
+- `data/acknowledgements.tex`: 致谢  
+- `data/resume.tex`: 简历及论文发表情况  
