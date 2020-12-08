@@ -35,7 +35,7 @@
 	- 规定：［序号］.作者.文章题目.刊名，出版年份，卷号（期号）：页码
 	- 示例：
 			- 〔1〕梁柱.论高等学校在未来终生教育体制中的地位和作用.北京大学学报（哲学社会科学版），1997,3： 79—84
-		- 〔2〕PELAGTTI P,BACCHI A,CARCELL M,et al. Palladium complexes containing a P, N chelating ligand Part Ⅲ.J Organomet Chem,1999,583:94—105
+			- 〔2〕PELAGTTI P,BACCHI A,CARCELL M,et al. Palladium complexes containing a P, N chelating ligand Part Ⅲ.J Organomet Chem,1999,583:94—105
 - 会议论文
 	- 规定：［序号］作者.篇名.出版地：出版者，出版年份：起始页码. 
 	- 示例：
