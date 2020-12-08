@@ -39,12 +39,12 @@
 - 会议论文
 	- 规定：［序号］作者.篇名.出版地：出版者，出版年份：起始页码. 
 	- 示例：
-			- 〔3〕伍蠡甫.西方文论选. 上海：上海译文出版社，1979：12-17.
-			- 〔4〕Spivak,G. Victory in Limbo. Urbana: University of Illinois Press, 1988, pp.271-313.
+		- 〔3〕伍蠡甫.西方文论选. 上海：上海译文出版社，1979：12-17.
+		- 〔4〕Spivak,G. Victory in Limbo. Urbana: University of Illinois Press, 1988, pp.271-313.
 - 著作
 	- 规定：［序号］作者.书名.出版地：出版社，出版年份：起止页码.
 	- 示例：
-			- 〔5〕 张志建.严复思想研究. 桂林：广西师范大学出版社，1989.
-			- 〔6〕Gill, R. Mastering English Literature. London: Macmillan, 1985: 42-45.
+		- 〔5〕 张志建.严复思想研究. 桂林：广西师范大学出版社，1989.
+		- 〔6〕Gill, R. Mastering English Literature. London: Macmillan, 1985: 42-45.
 
 
