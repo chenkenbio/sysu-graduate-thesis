@@ -64,7 +64,7 @@
 	- main.tex文件的主体包括：abstract， denotation， chapter， ref, appendix等。各部分的格式在对应的文件中都有详细描述，如何将各部分引入到main.tex中，在mian.tex中有详细的注解。
 
 
-## 撰写论文各部分说明 
+## 撰写论文各章节说明 
 - `sysusetup.tex`: 填写论文标题, 学位类别, 学院, 专业等基本信息; 加载宏包; 定义参考文献格式  
 - `data/abstract.tex`: 填写摘要  
 - `data/denotation.tex`: 缩略语和符号, 请**按照字母顺序(A-Z)罗列**  
