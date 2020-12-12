@@ -11,7 +11,7 @@
     - simhei.ttf  
 
 
-## 使用说明 
+## 平台使用说明 
 - OverLeaf上使用
 	- 在overleaf点击创建newPorject, 上传压缩版的本项目（zip格式）
 	- 在overleaf界面，点击左上角的main按钮，选择settings中的compiler， 选择XeLaTex编译器
@@ -25,25 +25,25 @@
 
 
 ## 使用说明 
--`main.tex`: 用于编写论文主体部分
-	-`main.tex`中，\documentclass[degree=doctor]{sysuthesis}，如果是硕士，用master, 如果是博士，用doctor
+- `main.tex`: 用于编写论文主体部分
+	- `main.tex`中，\documentclass[degree=doctor]{sysuthesis}，如果是硕士，用master, 如果是博士，用doctor
 - 目录结构说明
 	- 主要修改的是main.tex文件，main.tex文件里有每一行代码的详细描述。
 	- main中的的主体部分都放在data目录下。通过\input的方式引入到main.tex中，最后并统一通过maix.tex生成pdf显示。
 	- main.tex文件的主体包括：abstract， denotation， chapter， ref, appendix等。各部分的格式在对应的文件中多详细描述，如何引入到main.tex中也在mian.tex中有详细的注解。
 - 参考文献的编译方式：和main.tex稍有区别的是：maix.tex直接编译，即可生成对应的pdf。但是参考文献的编译方式如下：
-	-用LaTeX编译你的 .tex 文件 , 这是生成一个 .aux 的文件, 这告诉 BibTeX 将使用那些应用；
-	-用BibTeX 编译 .bib 文件；
-	-再次用LaTeX 编译你的 .tex 文件，这个时候在文档中已经包含了参考文献，但此时引用的编号可能不正确；
-	-最后用 LaTeX 编译你的 .tex 文件，如果一切顺利的话, 这是所有东西都已正常了.
+	- 用LaTeX编译你的 .tex 文件 , 这是生成一个 .aux 的文件, 这告诉 BibTeX 将使用那些应用
+	- 用BibTeX 编译 .bib 文件
+	- 再次用LaTeX 编译你的 .tex 文件，这个时候在文档中已经包含了参考文献，但此时引用的编号可能不正确
+	- 最后用 LaTeX 编译你的 .tex 文件，如果一切顺利的话, 这是所有东西都已正常了
 
 
 ## 样式控制
--`.bbx结尾的文件`: 用于列表样式控制
--`.cbx结尾的文件`: 作者引用样式控制
--`.bst结尾的文件`: 作者排版样式控制 
--`.cls结尾的文件` :是类文件，用于控制main的主题风格
--`ins` 文件通常用来控制TeX 从 `.dtx` 文件里释放宏包文件
+- `.bbx结尾的文件`: 用于列表样式控制
+- `.cbx结尾的文件`: 作者引用样式控制
+- `.bst结尾的文件`: 作者排版样式控制 
+- `.cls结尾的文件` :是类文件，用于控制main的主题风格
+- `ins` 文件通常用来控制TeX 从 `.dtx` 文件里释放宏包文件
 
 
 
