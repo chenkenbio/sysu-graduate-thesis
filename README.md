@@ -21,7 +21,7 @@
 
 ## 配置环境  
 - Windows 
-	- TexLive 2020  (具体参考当前最新的版本)
+	- 需要提前先安装TexLive 2020  (具体参考当前最新的版本)
 - 字体 (Linux用户需要注意):   
     - times.ttf  
     - simhei.ttf  
@@ -29,16 +29,16 @@
 
 ## 平台使用说明 
 - 首先从 GitHub clone 项目源码或者下载源码 zip 包，然后选择平台
-- OverLeaf上使用
+- 在OverLeaf平台上使用方法
 	- 在overleaf点击创建newPorject, 上传压缩版的本项目（zip格式）
 	- 在overleaf界面，点击左上角的main按钮，选择settings中的compiler， 选择XeLaTex编译器
 	- 编译`main.tex`
 	
-- 在Windows上使用
+- 在Windows上使用方法
 	- 下载本项目到本地的windows环境，前提要配置好tex环境，即需要先安装最新的Texlive（latex的运行环境），具体可参考网上windows latex环境使用依赖需求。
 	- 安装好latex的使用依赖环境后，使用步骤如下：
 		- 找到应用程序并且打开 TeXworks editor，或者是自己安装一个latex文档编辑器（背景说明里有描述）
-		- 在编辑器打开下载项目中的main.tex文件，然后选择XeLaTex编译器，然后直接编译`main.tex`文件即可。
+		- 在编辑器中打开下载项目中的main.tex文件，然后选择XeLaTex编译器，然后直接编译`main.tex`文件即可。
 		- 点击view按钮，可以看到对应的pdf文件。
 	- 参考文献的编译方式：和main.tex稍有区别的是：maix.tex直接编译，即可生成对应的pdf。但是参考文献的编译方式如下：
 		- 用XeLaTex编译你的 .tex 文件 , 这是生成一个 .aux 的文件, 这告诉 BibLaTeX 将使用那些应用
@@ -56,14 +56,15 @@
 
 ## 使用说明 
 - `main.tex`: 用于编写论文主体部分
-	- `main.tex`中，在代码：`\documentclass[degree=doctor]{sysuthesis}`中，如果是硕士论文，用master, 如果是博士论文，用doctor
+	- 关于硕博论文选择
+		- `main.tex`中，在代码：`\documentclass[degree=doctor]{sysuthesis}`这一行，如果是硕士论文，用master, 如果是博士论文，用doctor
 - 目录结构说明
 	- 主要修改的是main.tex文件，main.tex文件里有每一行代码的详细描述。
 	- main中的的主体部分都放在data目录下。通过\input的方式引入到main.tex中，最后并统一通过maix.tex生成pdf显示（完成撰写后，编译main.tex即可）。
 	- main.tex文件的主体包括：abstract， denotation， chapter， ref, appendix等。各部分的格式在对应的文件中都有详细描述，如何将各部分引入到main.tex中，在mian.tex中有详细的注解。
 
 
-## 撰写论文  
+### 撰写论文  
 - `sysusetup.tex`: 填写论文标题, 学位类别, 学院, 专业等基本信息; 加载宏包; 定义参考文献格式  
 - `data/abstract.tex`: 填写摘要  
 - `data/denotation.tex`: 缩略语和符号, 请**按照字母顺序(A-Z)罗列**  
