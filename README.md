@@ -5,8 +5,6 @@
 关于开发模板的相关说明请参考 [https://github.com/tuna/thuthesis](https://github.com/tuna/thuthesis)
 
 ## 使用说明  
----
-### 配置环境
 
 模板可以在个人电脑或Overleaf平台使用.
 
@@ -20,26 +18,7 @@
     - simkai.ttf
     - 等其他字体
 
----
-### 编辑文件  
-
-与论文内容有关的文件
-=======
-### 配置环境  
-- TexLive 2020  
-- 字体 (Linux用户需要注意):   
-    - times.ttf  
-    - simhei.ttf  
-
-
-## 使用说明 
-- OverLeaf上使用
-	- 在overleaf点击创建newPorject, 上传压缩版的本项目（zip格式）
-	- 在overleaf界面，点击左上角的main按钮，选择settings中的compiler， 选择XeLaTex编译器
-	- 编译`main.tex`
-- 在windows上使用
-	- 下载本项目到本地的windows环境，直接编译`main.tex`文件即可。
-
+## 编辑文件
 - `sysusetup.tex`: 填写论文标题, 学位类别, 学院, 专业等基本信息; 加载宏包; 定义参考文献格式  
 - `main.tex`: latex主文件(也可以改成其他名字). 需要在其中配置学位类别以及增添各个章节的记录  
     学位类别:  
@@ -53,7 +32,7 @@
 - `data/resume.tex`: 简历及论文发表情况  
 
 ---
-### 编译文档  
+## 编译文档  
 借助IDE或VS Code/Sublime Text插件编译的方法请查阅相关手册, 这里只介绍从命令行编译的方法.
 
 ```
@@ -71,7 +50,7 @@ xelatex main.tex
 make all (仅在Linux命令行可用)
 ```
 ---
-### 注意事项  
+## 注意事项  
 
 1. 缩略语列表  
 请按照字母 (A-Z) 顺序排序, 中文按音序;
