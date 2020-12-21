@@ -24,13 +24,27 @@
 ### 编辑文件  
 
 与论文内容有关的文件
+=======
+### 配置环境  
+- TexLive 2020  
+- 字体 (Linux用户需要注意):   
+    - times.ttf  
+    - simhei.ttf  
+
+
+## 使用说明 
+- OverLeaf上使用
+	- 在overleaf点击创建newPorject, 上传压缩版的本项目（zip格式）
+	- 在overleaf界面，点击左上角的main按钮，选择settings中的compiler， 选择XeLaTex编译器
+	- 编译`main.tex`
+- 在windows上使用
+	- 下载本项目到本地的windows环境，直接编译`main.tex`文件即可。
 
 - `sysusetup.tex`: 填写论文标题, 学位类别, 学院, 专业等基本信息; 加载宏包; 定义参考文献格式  
 - `main.tex`: latex主文件(也可以改成其他名字). 需要在其中配置学位类别以及增添各个章节的记录  
     学位类别:  
     - 硕士: `\documentclass[degree=master]{sysuthesis}`
     - 博士: `\documentclass[degree=doctor]{sysuthesis}`  
-
     在 Linux 上启用 Windows 字体: `\documentclass[fontset=windows]{sysuthesis}`
 - `data/abstract.tex`: 摘要  
 - `data/denotation.tex`: 缩略语和符号, 请**按照字母顺序(A-Z)罗列**  
