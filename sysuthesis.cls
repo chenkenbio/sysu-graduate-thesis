@@ -1173,12 +1173,12 @@
     lotskip      = 0pt,
   },
   section = {
-    titleformat  = \sanhao\songti,
+    titleformat  = \xiaosan\songti\textbf,
     aftername    = \quad,
     afterindent  = true,
   },
   subsection = {
-    titleformat  = \sihao\songti,
+    titleformat  = \sihao\songti\textbf,
     aftername    = \quad,
     afterindent  = true,
   },
@@ -1388,10 +1388,6 @@
   title = {
     default = {标题},
   },
-  title* = {
-    default = {Title},
-    name    = title@en,
-  },
   author = {
     default = {姓名},
   },
@@ -1408,10 +1404,6 @@
     default = {工学博士},
     name    = degree@name,
   },
-  degree-name* = {
-    default = {Doctor of Philosophy},
-    name    = degree@name@en,
-  },
   department = {
     default = {计算机科学与技术系},
   },
@@ -1425,30 +1417,10 @@
   date = {
     default = {\the\year-\two@digits{\month}-\two@digits{\day}},
   },
-  clc,
-  udc,
-  id,
-  discipline-level-1 = {
-    default = {一级学科名称},
-    name    = discipline@level@i,
-  },
-  discipline-level-2 = {
-    default = {二级学科名称},
-    name    = discipline@level@ii,
-  },
-  start-date = {
-    name    = start@date,
-    default = {\the\year-\two@digits{\month}-\two@digits{\day}},
-  },
-  end-date = {
-    name    = end@date,
-    default = {\the\year-\two@digits{\month}-\two@digits{\day}},
-  },
   include-spine = {
     name = include@spine,
     choices = {
       false,
-      true,
     },
     default = false,
   },
@@ -1611,7 +1583,7 @@
     \sysu@info@item{专业名称}{}{\sysu@discipline}%
     \sysu@info@item{申请人姓名}{\sysu@name@title}{\sysu@author}%
     \sysu@info@item{导师姓名}{\sysu@name@title}{\sysu@supervisor}%
-    \sysu@info@item{答辩委员会成员}{}{\parbox[t][5cm][t]{7cm}{\sysu@committee}}
+    \sysu@info@item{答辩委员会成员}{}{\parbox[t][9cm][t]{7cm}{\sysu@committee}}
   }\par
 }
 
