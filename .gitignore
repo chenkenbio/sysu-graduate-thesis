@@ -295,3 +295,4 @@ TSWLatexianTemp*
 
 # standalone packages
 *.sta
+from_teachers/
