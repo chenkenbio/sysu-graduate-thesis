@@ -15,17 +15,16 @@
 1. `sysusetup.tex`: 填写标题、作者、导师、学位名称等信息。
 2. `data/abstract.tex`: 填写中英文摘要。
 3. `data/denotation.tex`: 填写符号与缩略语,注意按音序排序。
-4. `data/chapxx.tex`: 各章内容,如有章节增删请在 main.tex 中修改相
-关记录`。
+4. `data/chapxx.tex`: 各章内容,如有章节增删请在`main.tex`中修改相关记录`。
 5. `data/appendix.tex`: 附录。
 6. `data/works.tex`: 学术成果。
 7. `data/acknowledgements.tex`: 致谢。
 8. `ref/refs.bib`: 引文数据库。
 9. `main.tex`: 主文件,用于控制文档选项(字体,学位类别):  
-(a) 学术硕士: `\documentclass[degree=master]{sysuthesis}`;  
-(b) 专业硕士: `\documentclass[degree=master,degree­-type=professional]{sysuthesis}`;  
-(c) 博士: `\documentclass[degree=doctor]{sysuthesis}` 。
-指定论文要包括的部分,如摘要、目录、正文各章节、附录、引文数据库等等。
+    - 学术硕士: `\documentclass[degree=master]{sysuthesis}`;  
+    - 专业硕士: `\documentclass[degree=master,degree­-type=professional]{sysuthesis}`;  
+    - 博士: `\documentclass[degree=doctor]{sysuthesis}` 。
+指定论文包括的部分,如摘要、目录、正文各章节、附录、引文数据库等等。
 (注意插入每章内容之后要加 `\cleardoublepage` 以保证在打印版中各章都从右边开始):  
 ```
     \input{data/chap01}
@@ -63,12 +62,8 @@ make all (仅在Linux命令行可用)
 
 3. 数学公式
 - 数学公式结束时，若一句话结束就用句号，若未结束就用逗号。切忌漏标点符号;
-- 数学公式中出现括号时，使用\left（和\right）（大括号、中括号、尖括号同理）;
+- 数学公式中出现括号时，使用`\left(`和`\right)`（大括号、中括号、尖括号同理）;
 
-4. 参考文献  
-- 引文列表采用 “顺序编码制”，被引文献按正文部分引用次序排列。
-- 引文格式, 使用GB 7714-2005方案规定的格式.
-
-5. 字体问题  
-为确保字体符合学院要求, 最终版论文请在 Windows 平台编译, 或安装Windows字体并指定字体集为 Windows: 
+4. 字体问题  
+为确保字体符合学院要求, 最终版论文请在 Windows 平台编译, 或在Linux等平台安装Windows字体并指定字体集为 Windows: 
 `\documentclass[degree=doctor, fontset=windows]{sysuthesis}`
