@@ -2443,8 +2443,9 @@
     \let\chaptermark\@gobble
   \else
     \renewcommand\headrulewidth{0.75bp}%
-    \fancyhead[CE]{\wuhao\leftmark}%
-    \fancyhead[CO]{\wuhao 中山大学\sysu@degree@name 学位论文}%
+    \fancyhead[C]{\wuhao\leftmark}%
+%    \fancyhead[CE]{\wuhao\leftmark}%
+%    \fancyhead[CO]{\wuhao 中山大学\sysu@degree@name 学位论文}%
     \fancyfoot[C]{\wuhao\thepage}%
     \let\@mkboth\markboth
     \def\chaptermark##1{%
@@ -2772,12 +2773,15 @@
 %   \item 表：caption 在上，段前空 12 磅，段后空 6 磅
 % \end{itemize}
 %    \begin{macrocode}
-\ifsysu@degree@bachelor
-  \AtBeginDocument{% delay the check until all packages are loaded
-    \g@addto@macro\appendix{\renewcommand*{\thefigure}{\thechapter-\arabic{figure}}}
-    \g@addto@macro\appendix{\renewcommand*{\thetable}{\thechapter-\arabic{table}}}
-  }
-\fi
+% \ifsysu@degree@bachelor
+%   \AtBeginDocument{% delay the check until all packages are loaded
+%     \g@addto@macro\appendix{\renewcommand*{\thefigure}{\thechapter-\arabic{figure}}}
+%     \g@addto@macro\appendix{\renewcommand*{\thetable}{\thechapter-\arabic{table}}}
+%   }
+\renewcommand{\thetable}{\arabic{chapter}-\arabic{table}}  
+\renewcommand{\thefigure}{\arabic{chapter}-\arabic{figure}}
+
+% \fi
 %    \end{macrocode}
 %
 %    \begin{macrocode}
@@ -2945,7 +2949,7 @@
       chapter = {
         format     = \centering\sffamily\sanhao,
         beforeskip = 27bp,
-        afterskip  = 27bp,
+        afterskip  = 47bp,
       },
       section = {
         format     = \sffamily\fontsize{14bp}{20bp}\selectfont,
@@ -3408,7 +3412,7 @@
   \begingroup
     \def\CJKglue{\hskip 1bp}%
     \CJKfamily+{}\chuhao\zhongsong
-    \sysu@degree@name 学位论文\par
+    \textbf{\sysu@degree@name 学位论文}\par
   \endgroup
   \vskip 2cm
   \sysu@underline[12cm]{\xiaoer\sysu@title}\par

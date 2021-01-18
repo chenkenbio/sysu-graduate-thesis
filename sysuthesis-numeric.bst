@@ -66,7 +66,7 @@ FUNCTION {load.config}
   #1 'sentence.case.title :=
   #0 'link.title :=
   #1 'title.in.journal :=
-  #0 'show.mark :=
+  #1 'show.mark :=
   #1 'show.medium.type :=
   #1 'slash.for.extraction :=
   #0 'in.booktitle :=

@@ -8,7 +8,7 @@
 %% 
 %% This is a generated file.
 %% 
-%% Copyright (C) 2005-2020 by Ruini Xue <xueruini@gmail.com>
+%% Copyright (C) 2005-2021 by Ruini Xue <xueruini@gmail.com>
 %% 
 %% This work may be distributed and/or modified under the
 %% conditions of the LaTeX Project Public License, either version 1.3
@@ -619,6 +619,7 @@
   \setCJKsansfont{SimHei}[AutoFakeBold]%
   \setCJKmonofont{FangSong}%
   \setCJKfamilyfont{zhsong}{SimSun}[AutoFakeBold]%
+  \setCJKfamilyfont{zhongsong}{STZhongsong}[AutoFakeBold]%
   \setCJKfamilyfont{zhhei}{SimHei}[AutoFakeBold]%
   \setCJKfamilyfont{zhkai}{KaiTi}%
   \setCJKfamilyfont{zhfs}{FangSong}%
@@ -634,7 +635,7 @@
   \setCJKmonofont{STFangsong}
   \setCJKfamilyfont{zhsong}{Songti SC}[
     UprightFont = * Light,
-      BoldFont  = * Bold,
+      %BoldFont  = * Bold,
   ]%
   \setCJKfamilyfont{zhhei}{Heiti SC}[
     UprightFont = * Light,
@@ -712,6 +713,7 @@
 }
 \ifsysu@cjk@font@none\else
   \providecommand\songti{\CJKfamily{zhsong}}
+  \providecommand\zhongsong{\CJKfamily{zhongsong}}
   \providecommand\heiti{\CJKfamily{zhhei}}
   \providecommand\fangsong{\CJKfamily{zhfs}}
   \providecommand\kaishu{\CJKfamily{zhkai}}
@@ -820,11 +822,11 @@
       \ifsysu@degree@graduate
         \def\contentsname{目\quad 录}%
         \def\sysu@denotation@name{符号和缩略语说明}%
-        \def\sysu@resume@name{个人简历、在学期间完成的相关学术成果}%
+        \def\sysu@resume@name{在学期间完成的相关学术成果}%
       \else  % degree = postdoc
         \def\contentsname{目\qquad 次}%
         \def\sysu@denotation@name{符号表}%
-        \def\sysu@resume@name{个人简历、发表的学术论文与科研成果}%
+        \def\sysu@resume@name{发表的学术论文与科研成果}%
       \fi
     \fi
   \else
@@ -1124,12 +1126,9 @@
   \fontsize{11bp}{14.3bp}\selectfont
   \renewcommand\arraystretch{1.4}%
 }{}{\sysu@patch@error{\@floatboxreset}}
-\ifsysu@degree@bachelor
-  \AtBeginDocument{% delay the check until all packages are loaded
-    \g@addto@macro\appendix{\renewcommand*{\thefigure}{\thechapter-\arabic{figure}}}
-    \g@addto@macro\appendix{\renewcommand*{\thetable}{\thechapter-\arabic{table}}}
-  }
-\fi
+\renewcommand{\thetable}{\arabic{chapter}-\arabic{table}}
+\renewcommand{\thefigure}{\arabic{chapter}-\arabic{figure}}
+
 \newcommand\sysu@caption@font{}
 \newcommand\sysu@set@caption@font{%
   \ifsysu@degree@bachelor
@@ -1223,7 +1222,7 @@
       chapter = {
         format     = \centering\sffamily\sanhao,
         beforeskip = 27bp,
-        afterskip  = 27bp,
+        afterskip  = 47bp,
       },
       section = {
         format     = \sffamily\fontsize{14bp}{20bp}\selectfont,
@@ -1388,24 +1387,54 @@
   title = {
     default = {标题},
   },
+  title* = {
+      default = {Title},
+      name = title@en,
+  },
   author = {
     default = {姓名},
   },
   supervisor = {
     default = {导师姓名},
   },
-  joint-supervisor = {
-    name = joint@supervisor,
+  supervisor-title = {
+    default = {教授},
+    name = supervisor@title,
   },
-  committee = {
+  committee-chair = {
       default = {},
+      name = committee@chair,
+  },
+  committee-member1 = {
+      default = {},
+      name = committee@one,
+  },
+  committee-member2 = {
+      default = {},
+      name = committee@two,
+  },
+  committee-member3 = {
+      default = {},
+      name = committee@three,
+  },
+  committee-member4 = {
+      default = {},
+      name = committee@four,
+  },
+  committee-member5 = {
+      default = {},
+      name = committee@five,
+  },
+  series-id = {
+      default = {},
+      name = series@number,
   },
   degree-name = {
-    default = {工学博士},
+    default = {硕士},
     name    = degree@name,
   },
   department = {
-    default = {计算机科学与技术系},
+    default = {计算机学院},
   },
   discipline = {
     % default = {计算机科学与技术},
@@ -1491,6 +1520,116 @@
   \expandafter\comma@parse\expandafter{#1}{\sysu@name@title@process}%
   \sysu@name@title@format{\sysu@@name}{\sysu@@title}%
 }
+\newcommand\makecover{
+    \cleardoublepage
+    \sysu@pdfbookmark{-2}{\sysu@title}
+    \sysu@coverpage
+    \clearpage
+}
+\newcommand\sysu@coverpage{
+    \sysusetup{language = chinese}
+    \ifsysu@degree@doctor
+        \sysu@coverpage@graduate@academic
+    \else
+        \ifsysu@degree@type@professional
+            \sysu@coverpage@graduate@professional
+        \else
+            \sysu@coverpage@graduate@academic
+        \fi
+    \fi
+}
+\newcommand\sysu@coverpage@secret{
+    {\kaishu\hfill 密级: \sysu@pad{4em}{\sysu@secret@level}\relax}\\
+    {\kaishu\hfill 编号: \sysu@pad{4em}{\sysu@series@number}\relax}
+}
+\newcommand\sysu@coverpage@graduate@academic{%
+  \newgeometry{
+    top     = 3cm,
+    bottom  = 3cm,
+    hmargin = 3cm,
+  }%
+  \thispagestyle{empty}%
+  \null\vskip 0.2cm%
+  \begingroup
+    \centering
+    \sysu@coverpage@secret
+    \vskip 2cm
+    {\sysu@coverpage@title}%
+    \vskip 0.5cm
+  \begingroup
+    \def\CJKglue{\hskip 1bp}%
+    \CJKfamily+{}\chuhao\zhongsong
+    \textbf{\sysu@degree@name 学位论文}\par
+  \endgroup
+  \vskip 2cm
+  \sysu@underline[12cm]{\xiaoer\sysu@title}\par
+  \vskip 1.8cm
+  \sysu@underline[12cm]{\xiaoer\sysu@title@en}\par
+  \vskip 2cm
+  \begingroup
+    \noindent\sihao\kaishu
+    \begin{center}
+        学位申请人:\ \ \sysu@underline[5.3cm]{\sysu@author}
+        \vskip 0.2cm
+        导师姓名及职称:\ \ \sysu@underline[4.3cm]{\sysu@supervisor}
+        \vskip 0.2cm
+        专业名称:\ \ \sysu@underline[5.9cm]{\sysu@discipline}
+    \end{center}
+  \endgroup
+  \vskip 2cm
+  \begingroup
+    \centering
+    {\kaishu\sihao\sysu@format@date{\sysu@date@zh@digit}{\sysu@date}}\par
+  \endgroup
+  \endgroup
+  \thispagestyle{empty}
+  \clearpage
+  \restoregeometry
+}
+\newcommand\sysu@coverpage@graduate@professional{%
+  \newgeometry{
+    top     = 3cm,
+    bottom  = 3cm,
+    hmargin = 3cm,
+  }%
+  \thispagestyle{empty}%
+  \null\vskip 0.2cm%
+  \begingroup
+    \centering
+    \sysu@coverpage@secret
+    \vskip 2cm
+    {\sysu@coverpage@title}%
+    \vskip 0.5cm
+  \begingroup
+    \def\CJKglue{\hskip 1bp}%
+    \CJKfamily+{}\xiaochu
+    \sysu@underline[4.5cm]{工程 }\textbf{\sysu@degree@name\ifsysu@degree@type@professional 专业\fi 学位论文}\par
+  \endgroup
+  \vskip 2cm
+  \sysu@underline[12cm]{\xiaoer\sysu@title}\par
+  \vskip 1.8cm
+  \sysu@underline[12cm]{\xiaoer\sysu@title@en}\par
+  \vskip 2cm
+  \begingroup
+    \noindent\sihao\kaishu
+    \begin{center}
+        学位申请人:\ \ \sysu@underline[5.1cm]{\sysu@author}
+        \vskip 0.2cm
+        导师姓名及职称:\ \ \sysu@underline[4.1cm]{\sysu@supervisor\ \sysu@supervisor@title}
+        \vskip 0.2cm
+        专业、领域名称:\ \ \sysu@underline[4.2cm]{\sysu@discipline}
+    \end{center}
+  \endgroup
+  \vskip 2cm
+  \begingroup
+    \centering
+    {\kaishu\sihao\sysu@format@date{\sysu@date@zh@digit}{\sysu@date}}\par
+  \endgroup
+  \endgroup
+  \thispagestyle{empty}
+  \clearpage
+  \restoregeometry
+}
 \renewcommand\maketitle{%
   \cleardoublepage
   \pagenumbering{Alph}%
@@ -1520,13 +1659,13 @@
     \sysu@thesis@type
     \vskip 0.85cm%
     {\sysu@titlepage@title}%
+    {\sysu@titlepage@title@en}%
     \vfill
     \parbox[t][8.25cm][t]{\textwidth}{\centering\sysu@titlepage@info}\par
     \parbox[t][1cm][b]{\textwidth}{\centering\sysu@titlepage@date}\par
     \vskip 1cm%
     \parbox[t][2cm][t]{\textwidth}{%
       \hskip -0.69cm%
-      \sysu@titlepage@secret
     }\par
   \endgroup
   \thispagestyle{empty}
@@ -1544,9 +1683,20 @@
     \sysu@secret@level★\makebox[3em][c]{\sysu@secret@year}年%
   \fi\par
 }
+\newcommand\sysu@coverpage@title{%
+    \begin{figure}[htpb]
+        \centering
+        \includegraphics[width=0.7\linewidth]{sysu_logo.jpg}
+    \end{figure}
+}
+
 \newcommand\sysu@titlepage@title{%
   \sffamily\yihao[1.8]\sysu@title\par
 }
+\newcommand\sysu@titlepage@title@en{%
+  \sffamily\yihao[1.8]\sysu@title@en\par
+}
+
 \newcommand\sysu@titlepage@degree{%
   \begingroup
     \def\CJKglue{\hskip 1bp}%
@@ -1578,13 +1728,24 @@
   \end{tabular}%
 }
 \newcommand\sysu@titlepage@info@graduate@academic{%
-  \sysu@titlepage@info@tabular{2.8cm}{3.8cm}{0.82cm}{%
-    \sysu@info@item{培养单位}{}{\sysu@department}%
-    \sysu@info@item{专业名称}{}{\sysu@discipline}%
-    \sysu@info@item{申请人姓名}{\sysu@name@title}{\sysu@author}%
-    \sysu@info@item{导师姓名}{\sysu@name@title}{\sysu@supervisor}%
-    \sysu@info@item{答辩委员会成员}{}{\parbox[t][9cm][t]{7cm}{\sysu@committee}}
-  }\par
+    \begingroup
+    \linespread{1.1}
+    \xiaosan\songti
+    \begin{tabular}{ p{6cm} @{  } p{9cm} }
+        \hfill 专业:\  & \sysu@underline[5cm]{\sysu@discipline} \\
+        \hfill 学位申请人:\  & \sysu@underline[5cm]{\sysu@author} \\
+        \hfill 指导教师:\  & \sysu@underline[5cm]{\sysu@supervisor\ \sysu@supervisor@title} \\
+    \end{tabular}\par
+    \vspace{1cm}
+    \begin{tabular}{ p{6cm} @{  } p{9cm} }
+        \hfill 论文答辩委员会主席:\  & \sysu@underline[5cm]{\sysu@committee@chair} \\
+        \hfill 成员:\  & \sysu@underline[5cm]{\sysu@committee@one} \\
+        \hfill & \sysu@underline[5cm]{\sysu@committee@two} \\
+        \hfill & \sysu@underline[5cm]{\sysu@committee@three} \\
+        \hfill & \sysu@underline[5cm]{\sysu@committee@four} \\
+               &
+    \end{tabular}
+    \endgroup\par
 }
 
 \newcommand\sysu@titlepage@date{%
@@ -1593,13 +1754,12 @@
     \sanhao\sysu@format@date{\sysu@date@zh@short}{\sysu@date}\par
   \endgroup
 }
-
 \newcommand\statementpage{%
   \cleardoublepage
   \thispagestyle{empty}%
   \sysu@pdfbookmark{0}{声明}%
   \sysu@phantomsection
-  \sysu@copyright@page@graduate
+  \includepdf[pages=-]{data/statement_page_official.pdf}
 }
 \newcommand{\sysu@authorization@frontdate}{%
   日\ifsysu@degree@bachelor\hspace{1em}\else\hspace{2em}\fi 期：}
@@ -1620,9 +1780,12 @@
       },
     }%
     \begin{center}
-        {\Large \textbf{论文原创性声明}}
+        {\xiaoer\heiti\textbf{原创性及使用授权声明}}
     \end{center}
-
+    \vskip 0.5cm
+    \begin{center}
+        {\xiaoer\songti\textbf{论文原创性声明内容}}
+    \end{center}
     本人郑重声明：所呈交的学位论文，是本人在导师的指导下，独立进行研究工作所取得的成果。除文中已经注明引用的内容外，本论文不包含任何其他个人或集体已经发表或撰写过的作品成果。对本文的研究作出重要贡献的个人和集体，均已在文中以明确方式标明。本人完全意识到本声明的法律结果由本人承担。
     \thispagestyle{empty}%
   \endgroup
@@ -1703,6 +1866,7 @@
   \null\par
     \textsf{关键词：}%
   \sysu@clist@use{\sysu@keywords}{，}%
+  \cleardoublepage
   \sysu@reset@main@language % switch back to main language
 }
 \newenvironment{abstract*}{%
@@ -1715,6 +1879,7 @@
   \sysu@clist@use{\sysu@keywords@en}{, }%
     \vspace*{\stretch{1}}%
     %  \fi
+  \cleardoublepage
   \sysu@reset@main@language % switch back to main language
 }
 \newcommand{\sysu@author@signature}{作者签名：}
