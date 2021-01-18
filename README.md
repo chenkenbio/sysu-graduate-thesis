@@ -11,26 +11,28 @@
 - 个人电脑: 安装最新版 TexLive, 配合文本编辑器 VS Code, Sublime Text使用, 也可以直接使用其他LaTeX IDE.  
 - Overleaf: 注意选择编译器为 `xelatex`  
 
-- 字体, 建议 Linux 用户安装Windows字体, 并按下文提示启用windows字体以避免字体不符合学校规定.
-    - times.ttf  
-    - simhei.ttf  
-    - simsun.ttf
-    - simkai.ttf
-    - ...
-
 ## 编辑文件
-- `sysusetup.tex`: 填写论文标题, 学位类别, 学院, 专业等基本信息; 加载宏包; 定义参考文献格式  
-- `main.tex`: latex主文件(也可以改成其他名字). 需要在其中配置学位类别以及增添各个章节的记录  
-    学位类别:  
-    - 硕士: `\documentclass[degree=master]{sysuthesis}`
-    - 博士: `\documentclass[degree=doctor]{sysuthesis}`  
-    在 Linux 上启用 Windows 字体: `\documentclass[fontset=windows]{sysuthesis}`
-- `data/abstract.tex`: 摘要  
-- `data/denotation.tex`: 缩略语和符号, 请**按照字母顺序(A-Z)罗列**  
-- `data/chap*.tex`: 章节内容, 在`main.tex`文件中调用, 如有增添或重命名等需要在`main.tex`里修改相应记录  
-- `data/acknowledgements.tex`: 致谢  
-- `data/resume.tex`: 简历及论文发表情况  
-
+1. `sysusetup.tex`: 填写标题、作者、导师、学位名称等信息。
+2. `data/abstract.tex`: 填写中英文摘要。
+3. `data/denotation.tex`: 填写符号与缩略语,注意按音序排序。
+4. `data/chapxx.tex`: 各章内容,如有章节增删请在 main.tex 中修改相
+关记录`。
+5. `data/appendix.tex`: 附录。
+6. `data/works.tex`: 学术成果。
+7. `data/acknowledgements.tex`: 致谢。
+8. `ref/refs.bib`: 引文数据库。
+9. `main.tex`: 主文件,用于控制文档选项(字体,学位类别):  
+(a) 学术硕士: `\documentclass[degree=master]{sysuthesis}`;  
+(b) 专业硕士: `\documentclass[degree=master,degree­-type=professional]{sysuthesis}`;  
+(c) 博士: `\documentclass[degree=doctor]{sysuthesis}` 。
+指定论文要包括的部分,如摘要、目录、正文各章节、附录、引文数据库等等。
+(注意插入每章内容之后要加 `\cleardoublepage` 以保证在打印版中各章都从右边开始):  
+```
+    \input{data/chap01}
+    \cleardoublepage
+    \input{data/chap02}
+    \cleardoublepage
+```
 ---
 ## 编译文件  
 
@@ -65,20 +67,8 @@ make all (仅在Linux命令行可用)
 
 4. 参考文献  
 - 引文列表采用 “顺序编码制”，被引文献按正文部分引用次序排列。
-- 引文格式:  
-    - 期刊论文  
-    规定：［序号］.作者.文章题目.刊名，出版年份，卷号（期号）：页码  
-    示例： 
-    〔1〕梁柱.论高等学校在未来终生教育体制中的地位和作用.北京大学学报（哲学社会科学版），1997,3： 79—84  
-    〔2〕PELAGTTI P,BACCHI A,CARCELL M,et al. Palladium complexes containing a P, N chelating ligand Part Ⅲ.J Organomet Chem,1999,583:94—105
-    主要作者. 论文标题. 期刊名称
-    - 会议论文  
-    规定：［序号］作者.篇名.出版地：出版者，出版年份：起始页码.  
-    示例： 
-    〔3〕伍蠡甫.西方文论选. 上海：上海译文出版社，1979：12-17.  
-    〔4〕Spivak,G. Victory in Limbo. Urbana: University of Illinois Press, 1988, pp.271-313.  
-    - 著作
-    规定：［序号］作者.书名.出版地：出版社，出版年份：起止页码.  
-    示例：  
-    〔5〕 张志建.严复思想研究. 桂林：广西师范大学出版社，1989.  
-    〔6〕Gill, R. Mastering English Literature. London: Macmillan, 1985: 42-45.  
+- 引文格式, 使用GB 7714-2005方案规定的格式.
+
+5. 字体问题  
+为确保字体符合学院要求, 最终版论文请在 Windows 平台编译, 或安装Windows字体并指定字体集为 Windows: 
+`\documentclass[degree=doctor, fontset=windows]{sysuthesis}`
