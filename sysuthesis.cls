@@ -1165,7 +1165,7 @@
     nameformat   = {},
     numberformat = {},
     titleformat  = \xiaoer\heiti,
-    aftername    = \quad,
+    aftername    = \ \ ,
     fixskip      = true,
     afterindent  = true,
     lofskip      = 0pt,
@@ -1613,11 +1613,11 @@
   \begingroup
     \noindent\sihao\kaishu
     \begin{center}
-        学位申请人:\ \ \sysu@underline[5.1cm]{\sysu@author}
+        学位申请人:\ \ \sysu@underline[5.9cm]{\sysu@author}
         \vskip 0.2cm
-        导师姓名及职称:\ \ \sysu@underline[4.1cm]{\sysu@supervisor\ \sysu@supervisor@title}
+        导师姓名及职称:\ \ \sysu@underline[4.9cm]{\sysu@supervisor\ \sysu@supervisor@title}
         \vskip 0.2cm
-        专业、领域名称:\ \ \sysu@underline[4.2cm]{\sysu@discipline}
+        专业、领域名称:\ \ \sysu@underline[5.0cm]{\sysu@discipline}
     \end{center}
   \endgroup
   \vskip 2cm
@@ -1732,17 +1732,17 @@
     \linespread{1.1}
     \xiaosan\songti
     \begin{tabular}{ p{6cm} @{  } p{9cm} }
-        \hfill 专业:\  & \sysu@underline[5cm]{\sysu@discipline} \\
-        \hfill 学位申请人:\  & \sysu@underline[5cm]{\sysu@author} \\
-        \hfill 指导教师:\  & \sysu@underline[5cm]{\sysu@supervisor\ \sysu@supervisor@title} \\
+        \hfill 专业:\  & \sysu@underline[6cm]{\sysu@discipline} \\
+        \hfill 学位申请人:\  & \sysu@underline[6cm]{\sysu@author} \\
+        \hfill 指导教师:\  & \sysu@underline[6cm]{\sysu@supervisor\ \sysu@supervisor@title} \\
     \end{tabular}\par
     \vspace{1cm}
     \begin{tabular}{ p{6cm} @{  } p{9cm} }
-        \hfill 论文答辩委员会主席:\  & \sysu@underline[5cm]{\sysu@committee@chair} \\
-        \hfill 成员:\  & \sysu@underline[5cm]{\sysu@committee@one} \\
-        \hfill & \sysu@underline[5cm]{\sysu@committee@two} \\
-        \hfill & \sysu@underline[5cm]{\sysu@committee@three} \\
-        \hfill & \sysu@underline[5cm]{\sysu@committee@four} \\
+        \hfill 论文答辩委员会主席:\  & \sysu@underline[6cm]{\sysu@committee@chair} \\
+        \hfill 成员:\  & \sysu@underline[6cm]{\sysu@committee@one} \\
+        \hfill & \sysu@underline[6cm]{\sysu@committee@two} \\
+        \hfill & \sysu@underline[6cm]{\sysu@committee@three} \\
+        \hfill & \sysu@underline[6cm]{\sysu@committee@four} \\
                &
     \end{tabular}
     \endgroup\par

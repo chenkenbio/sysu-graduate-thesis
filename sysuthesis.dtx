@@ -1,8 +1,5 @@
 % \iffalse meta-comment
 %
-% Copyright (C) 2005-2020 by Tsinghua University TUNA Association <tuna@tsinghua.edu.cn>
-%
-%
 % This work may be distributed and/or modified under the
 % conditions of the LaTeX Project Public License, either version 1.3
 % of this license or (at your option) any later version.
@@ -17,7 +14,7 @@
 %
 % \iffalse
 %<*driver>
-\ProvidesFile{sysuthesis.dtx}[2020/10/14 7.1.0 Sun Yat-sen University Thesis Template]
+\ProvidesFile{sysuthesis.dtx}[2021-01-19 Yat-sen University Thesis Template]
 \documentclass{ltxdoc}
 \usepackage{dtx-style}
 
@@ -56,14 +53,13 @@
 % \def\indexname{索引}
 % \IndexPrologue{\section{\indexname}}
 %
-% \title{\bfseries\color{violet}\sysuthesis：清华大学学位论文模板\\English Title}
-% \author{{\fangsong 清华大学 TUNA 协会}\\[5pt]\texttt{tuna@tsinghua.edu.cn}}
+% \title{\bfseries\color{violet}\sysuthesis：中山大学学位论文模板\\English Title}
 % \date{v\fileversion\ (\filedate)}
 % \maketitle\thispagestyle{empty}
 %
 %
 % \begin{abstract}\noindent
-%   此宏包旨在建立一个简单易用的清华大学学位论文模板，包括本科综合论文训练、硕士
+%   此宏包旨在建立一个简单易用的中山大学学位论文模板，包括本科综合论文训练、硕士
 %   论文、博士论文以及博士后出站报告。
 % \end{abstract}
 %
@@ -75,14 +71,14 @@
 % \item 本模板的发布遵守 \href{https://www.latex-project.org/lppl/lppl-1-3c.txt}{\LaTeX{} Project Public License (1.3.c)}，使用前请认真阅读协议内
 %   容。
 % \item 本模板为作者根据
-%   清华大学研究生院颁发的
+%   中山大学研究生院颁发的
 %   \href{http://yjsy.cic.tsinghua.edu.cn/docinfo/board/boarddetail.jsp?columnId=001050603&parentColumnId=0010506&itemSeq=5365}{%
 %   《研究生学位论文写作指南》}（仅限校内网络访问）、
-%   清华大学教务处颁发的《综合论文训练写作指南》和
-%   清华大学
+%   中山大学教务处颁发的《综合论文训练写作指南》和
+%   中山大学
 %   \href{http://postdoctor.tsinghua.edu.cn/info/czxz/1283}{%
-%     《编写“清华大学博士后研究报告”参考意见》}
-%   编写而成，旨在供清华大学毕业生撰写学位论文使用。
+%     《编写“中山大学博士后研究报告”参考意见》}
+%   编写而成，旨在供中山大学毕业生撰写学位论文使用。
 % \item 任何个人或组织以本模板为基础进行修改、扩展而生成的新的专用模板，请严格遵
 %   守 \LaTeX{} Project Public License 协议。由于违犯协议而引起的任何纠纷争端均与
 %   本模板作者无关。
@@ -101,7 +97,7 @@
 %
 % \section{模板介绍}
 % \sysuthesis{} (\textbf{T}sing\textbf{h}ua \textbf{U}niversity \LaTeX{}
-% \textbf{Thesis} Template) 是为了帮助清华大学毕业生撰写毕业论文而编写
+% \textbf{Thesis} Template) 是为了帮助中山大学毕业生撰写毕业论文而编写
 % 的 \LaTeX{} 论文模板。
 %
 % 本文档将尽量完整的介绍模板的使用方法，如有不清楚之处，或者想提出改进建议，
@@ -975,45 +971,6 @@
 %   \sysusetup{toc-depth=0}  % 目录只出现章标题
 % \end{latex}
 %
-% \DescribeEnv{survey}
-% \DescribeEnv{translation}
-% 本科生《写作指南》要求附录 A 为外文资料的调研阅读报告或书面翻译，二者择一。
-% 调研报告（或书面翻译）的题目和参考文献是独立于论文的，相当一篇独立的小文章，
-% 所以模板相应定义了 \env{survey} 和 \env{translation}。在这两个环境内部可以
-% 像论文正文一样使用标题和参考文献的命令，但不会影响外部。
-% 但是需要使用 \hologo{BibTeX} 对 \file{*-survey.aux} 或者
-% \file{*-translation.aux} 进行编译，才能生成参考文献（见 \ref{sec:xelatex} 节）。
-% 如果使用 \texttt{latexmk}，则无需额外处理。
-%
-% 同时，阅读报告默认切换书写语言为英语，书面翻译默认切换为中文。
-% 如有需要，可以通过 \cs{sysusetup} 的 \option{language} 参数再次更改。
-%
-% \begin{latex}
-%   \begin{survey}
-%     \title{...}
-%     \maketitle
-%     \tableofcontents
-%     ... \cite{...} % 报告内容及其引用
-%     \bibliographystyle{...}
-%     \bibliography{...} % 报告的参考文献
-%   \end{survey}
-% \end{latex}
-%
-% “书面翻译对应的原文索引”区别于译文的参考文献，需要使用 \env{translation-index}
-% 环境，另外需要使用 \hologo{BibTeX} 编译 \file{*-index.aux}，\texttt{latexmk} 同样会自动处理。
-%
-% \begin{latex}
-%   \begin{translation}
-%     ... \cite{...} % 书面翻译内容及其引用
-%     \bibliographystyle{...}
-%     \bibliography{...}  % 书面翻译的参考文献
-%     \begin{translation-index}
-%       \nocite{...}
-%       \bibliographystyle{...}
-%       \bibliography{...}  % 书面翻译对应的原文索引
-%     \end{translation-index}
-%   \end{translation}
-% \end{latex}
 %
 % \subsubsection{个人简历、在学期间完成的相关学术成果}
 % \DescribeEnv{resume}
@@ -1606,10 +1563,6 @@
 % 页边距：上下左右均为 3.0 厘米，装订线 0 厘米；
 % 页眉距边界：2.2 厘米，页脚距边界：2.2 厘米。
 %
-% 本科生《写作指南》：
-% 页边距：上：3.8 厘米，下：3.2 厘米，左右：3 厘米，装订线：左 0.2 厘米。
-% 本科生 Word 模板：
-% 页眉距边界：1.5 厘米，页脚距边界：1.75 厘米。
 %
 %    \begin{macrocode}
 \geometry{
@@ -2845,7 +2798,7 @@
     nameformat   = {},
     numberformat = {},
     titleformat  = \xiaoer\heiti,
-    aftername    = \quad,
+    aftername    = \ \ ,
     fixskip      = true,
     afterindent  = true,
     lofskip      = 0pt,
@@ -3051,8 +3004,6 @@
 %
 % \subsubsection{目录}
 % \label{sec:toc}
-% 最多 4 层，即: x.x.x.x，对应的命令和层序号分别是：
-% \cs{chapter}(0), \cs{section}(1), \cs{subsection}(2), \cs{subsubsection}(3)。
 %    \begin{macrocode}
 \setcounter{secnumdepth}{3}
 \setcounter{tocdepth}{1}
@@ -3466,11 +3417,11 @@
   \begingroup
     \noindent\sihao\kaishu
     \begin{center}
-        学位申请人:\ \ \sysu@underline[5.1cm]{\sysu@author}
+        学位申请人:\ \ \sysu@underline[5.9cm]{\sysu@author}
         \vskip 0.2cm
-        导师姓名及职称:\ \ \sysu@underline[4.1cm]{\sysu@supervisor\ \sysu@supervisor@title}
+        导师姓名及职称:\ \ \sysu@underline[4.9cm]{\sysu@supervisor\ \sysu@supervisor@title}
         \vskip 0.2cm
-        专业、领域名称:\ \ \sysu@underline[4.2cm]{\sysu@discipline}
+        专业、领域名称:\ \ \sysu@underline[5.0cm]{\sysu@discipline}
     \end{center}
   \endgroup
   \vskip 2cm
@@ -3655,17 +3606,17 @@
     \linespread{1.1}
     \xiaosan\songti
     \begin{tabular}{ p{6cm} @{  } p{9cm} }
-        \hfill 专业:\  & \sysu@underline[5cm]{\sysu@discipline} \\
-        \hfill 学位申请人:\  & \sysu@underline[5cm]{\sysu@author} \\
-        \hfill 指导教师:\  & \sysu@underline[5cm]{\sysu@supervisor\ \sysu@supervisor@title} \\
+        \hfill 专业:\  & \sysu@underline[6cm]{\sysu@discipline} \\
+        \hfill 学位申请人:\  & \sysu@underline[6cm]{\sysu@author} \\
+        \hfill 指导教师:\  & \sysu@underline[6cm]{\sysu@supervisor\ \sysu@supervisor@title} \\
     \end{tabular}\par
     \vspace{1cm}
     \begin{tabular}{ p{6cm} @{  } p{9cm} }
-        \hfill 论文答辩委员会主席:\  & \sysu@underline[5cm]{\sysu@committee@chair} \\
-        \hfill 成员:\  & \sysu@underline[5cm]{\sysu@committee@one} \\
-        \hfill & \sysu@underline[5cm]{\sysu@committee@two} \\
-        \hfill & \sysu@underline[5cm]{\sysu@committee@three} \\
-        \hfill & \sysu@underline[5cm]{\sysu@committee@four} \\
+        \hfill 论文答辩委员会主席:\  & \sysu@underline[6cm]{\sysu@committee@chair} \\
+        \hfill 成员:\  & \sysu@underline[6cm]{\sysu@committee@one} \\
+        \hfill & \sysu@underline[6cm]{\sysu@committee@two} \\
+        \hfill & \sysu@underline[6cm]{\sysu@committee@three} \\
+        \hfill & \sysu@underline[6cm]{\sysu@committee@four} \\
                & 
     \end{tabular}
     \endgroup\par
@@ -5180,10 +5131,10 @@
 
 \hypersetup{
   pdflang     = zh-CN,
-  pdftitle    = {ThuThesis：清华大学学位论文模板},
-  pdfauthor   = {清华大学 TUNA 协会},
-  pdfsubject  = {清华大学学位论文模板使用说明},
-  pdfkeywords = {论文模板; 清华大学; 使用说明},
+  pdftitle    = {SysuThesis：中山大学学位论文模板},
+  pdfauthor   = {Ken Chen},
+  pdfsubject  = {中山大学学位论文模板使用说明},
+  pdfkeywords = {论文模板; 中山大学; 使用说明},
   pdfdisplaydoctitle = true
 }%
 
