@@ -4,6 +4,8 @@
 
 关于开发模板的相关说明请参考 [https://github.com/tuna/thuthesis](https://github.com/tuna/thuthesis)
 
+使用中有任何问题可以在issues中提出.
+
 ## 使用说明  
 
 模板可以在个人电脑或Overleaf平台使用.
@@ -67,3 +69,4 @@ make all (仅在Linux命令行可用)
 4. 字体问题  
 为确保字体符合学院要求, 最终版论文请在 Windows 平台编译, 或在Linux等平台安装Windows字体并指定字体集为 Windows: 
 `\documentclass[degree=doctor, fontset=windows]{sysuthesis}`
+
