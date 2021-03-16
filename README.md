@@ -70,3 +70,8 @@ make all (仅在Linux命令行可用)
 为确保字体符合学院要求, 最终版论文请在 Windows 平台编译, 或在Linux等平台安装Windows字体并指定字体集为 Windows: 
 `\documentclass[degree=doctor, fontset=windows]{sysuthesis}`
 
+## 更新记录
+- Tue 16 Mar 2021  
+    1. 支持较长的标题
+    2. 增加页眉与正文距离
+    3. 扉页日期置于底部

@@ -21,17 +21,9 @@
 %% To produce the documentation run the original source files ending with `.dtx'
 %% through LaTeX.
 %% 
-
-%% 更新记录
-%% 20210316:
-%%   - 修正封面页标题无法换行的问题
-%%   - 增加文字与页眉的距离
-%%
-%%
-
 \NeedsTeXFormat{LaTeX2e}[2017/04/15]
 \ProvidesClass{sysuthesis}
-[2021/03/16 un Yat-sen University Thesis Template]
+[2020/10/14 7.1.0 Sun Yat-sen University Thesis Template]
 \newcommand\sysu@error[1]{%
   \ClassError{sysuthesis}{#1}{}%
 }
@@ -1589,7 +1581,7 @@
         专业名称:\ \ \sysu@underline[5.9cm]{\sysu@discipline}
     \end{center}
   \endgroup
-  \vskip 2cm
+  \vfill
   \begingroup
     \centering
     {\kaishu\sihao\sysu@format@date{\sysu@date@zh@digit}{\sysu@date}}\par
@@ -1644,7 +1636,7 @@
         专业、领域名称:\ \ \sysu@underline[5.0cm]{\sysu@discipline}
     \end{center}
   \endgroup
-  \vskip 1cm
+  \vfill
   \begingroup
     \centering
     {\kaishu\sihao\sysu@format@date{\sysu@date@zh@digit}{\sysu@date}}\par
@@ -1686,6 +1678,7 @@
     {\sysu@titlepage@title@en}%
     \vfill
     \parbox[t][8.25cm][t]{\textwidth}{\centering\sysu@titlepage@info}\par
+    \vfill
     \parbox[t][1cm][b]{\textwidth}{\centering\sysu@titlepage@date}\par
   \endgroup
   \thispagestyle{empty}
