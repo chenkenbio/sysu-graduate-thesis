@@ -23,7 +23,7 @@
 %% 
 \NeedsTeXFormat{LaTeX2e}[2017/04/15]
 \ProvidesClass{sysuthesis}
-[2020/10/14 7.1.0 Sun Yat-sen University Thesis Template]
+[2021/05/20 SYSU-SDCS Thesis Template]
 \newcommand\sysu@error[1]{%
   \ClassError{sysuthesis}{#1}{}%
 }
@@ -56,7 +56,7 @@
 }
 \hyphenation{Thu-Thesis}
 \def\sysuthesis{ThuThesis}
-\def\version{7.1.0}
+\def\version{20210520}
 \RequirePackage{kvdefinekeys}
 \RequirePackage{kvsetkeys}
 \RequirePackage{kvoptions}
@@ -1162,8 +1162,8 @@
   \newcommand{\sysu@abstract@name@en}{ABSTRACT}
 \ctexset{%
   chapter = {
-    nameformat   = {},
-    numberformat = {},
+    nameformat   = {\xiaoer},
+    numberformat = {\xiaoer},
     titleformat  = \xiaoer\heiti,
     aftername    = \ \ ,
     fixskip      = true,
@@ -1172,11 +1172,15 @@
     lotskip      = 0pt,
   },
   section = {
+    nameformat = \xiaosan\songti,
+    numberformat = \xiaosan\songti,
     titleformat  = \xiaosan\songti\textbf,
     aftername    = \quad,
     afterindent  = true,
   },
   subsection = {
+    nameformat = \sihao\songti,
+    numberformat = \sihao\songti,
     titleformat  = \sihao\songti\textbf,
     aftername    = \quad,
     afterindent  = true,
@@ -1305,7 +1309,7 @@
 \setcounter{tocdepth}{1}
 \renewcommand\tableofcontents{%
   \ifsysu@degree@graduate
-    \sysu@chapter*{\contentsname}%
+    \sysu@chapter*[]{\contentsname}%
   \else
     \sysu@chapter*[]{\contentsname}%
   \fi
@@ -1400,6 +1404,14 @@
   supervisor-title = {
     default = {教授},
     name = supervisor@title,
+  },
+  jointsupervisor = {
+    default = {},
+    name = jointsupervisor,
+  },
+  jointsupervisor-title = {
+    default = {},
+    name = jointsupervisor@title,
   },
   committee-chair = {
       default = {},
@@ -1576,7 +1588,11 @@
     \begin{center}
         学位申请人:\ \ \sysu@underline[5.3cm]{\sysu@author}
         \vskip 0.2cm
-        导师姓名及职称:\ \ \sysu@underline[4.3cm]{\sysu@supervisor\ \sysu@supervisor@title}
+        \ifx\sysu@jointsupervisor\@empty
+            导师姓名及职称:\ \ \sysu@underline[4.3cm]{\sysu@supervisor\ \sysu@supervisor@title}
+        \else
+            导师姓名及职称:\ \ \sysu@underline[4.3cm]{\footnotesize\sysu@supervisor\ \sysu@supervisor@title; \sysu@jointsupervisor\ \sysu@jointsupervisor@title}
+        \fi
         \vskip 0.2cm
         专业名称:\ \ \sysu@underline[5.9cm]{\sysu@discipline}
     \end{center}
@@ -1631,7 +1647,11 @@
     \begin{center}
         学位申请人:\ \ \sysu@underline[5.9cm]{\sysu@author}
         \vskip 0.2cm
-        导师姓名及职称:\ \ \sysu@underline[4.9cm]{\sysu@supervisor\ \sysu@supervisor@title}
+        \ifx\sysu@jointsupervisor\@empty
+            导师姓名及职称:\ \ \sysu@underline[4.9cm]{\sysu@supervisor\ \sysu@supervisor@title}
+        \else
+            导师姓名及职称:\ \ \sysu@underline[4.9cm]{\footnotesize\sysu@supervisor\ \sysu@supervisor@title; \sysu@jointsupervisor\ \sysu@jointsupervisor@title}
+        \fi
         \vskip 0.2cm
         专业、领域名称:\ \ \sysu@underline[5.0cm]{\sysu@discipline}
     \end{center}
@@ -1747,7 +1767,11 @@
     \begin{tabular}{ p{6cm} @{\ \ } p{9cm} }
         \hfill 专业:\  & \sysu@underline[6cm]{\sysu@discipline} \\
         \hfill 学位申请人:\  & \sysu@underline[6cm]{\sysu@author} \\
-        \hfill 指导教师:\  & \sysu@underline[6cm]{\sysu@supervisor\ \sysu@supervisor@title} \\
+        \ifx\sysu@jointsupervisor\@empty
+            \hfill 指导教师:\  & \sysu@underline[6cm]{\sysu@supervisor\ \sysu@supervisor@title} \\
+        \else
+            \hfill 指导教师:\  & \sysu@underline[6cm]{\small\sysu@supervisor\ \sysu@supervisor@title; \sysu@jointsupervisor\ \sysu@jointsupervisor@title} \\
+        \fi
     \end{tabular}\par
     \vspace{.8cm}
     \begin{tabular}{ p{6cm} @{\ \ } p{9cm} }
